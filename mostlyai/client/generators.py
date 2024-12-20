@@ -118,9 +118,9 @@ class _MostlyGeneratorsClient(_MostlyBaseClient):
             from mostlyai import MostlyAI
             mostly = MostlyAI()
             g = mostly.generators.create(
-                config=GeneratorConfig(
-                    name="US Census",
-                    tables=[{
+                config={
+                    "name": "US Census",
+                    "tables": [{
                         "name": "census",
                         "data": original_df,
                     }]

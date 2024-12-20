@@ -297,6 +297,7 @@ class MostlyAI(_MostlyBaseClient):
         Example configuration using GeneratorConfig:
             ```python
             from mostlyai import MostlyAI
+            from mostlyai.domain import GeneratorConfig, SourceTableConfig
             mostly = MostlyAI()
             g = mostly.train(
                 config=GeneratorConfig(
