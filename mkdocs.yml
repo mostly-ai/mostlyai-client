@@ -54,7 +54,6 @@ plugins:
             extensions:
             - griffe_fieldz
             docstring_style: google
-            modernize_annotations: true
 
 markdown_extensions:
   - pymdownx.highlight:

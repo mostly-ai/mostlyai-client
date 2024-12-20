@@ -1,5 +1,6 @@
 .idea/
 dist/
+LICENSE_HEADER
 site/
 __pycache__/
 .vscode/
