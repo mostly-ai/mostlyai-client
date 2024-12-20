@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import annotations
 from typing import Any
 from collections.abc import Iterator
 
@@ -22,8 +23,6 @@ from mostlyai.domain import (
     ConnectorPatchConfig,
     ConnectorConfig,
 )
-
-_list = list
 
 
 class _MostlyConnectorsClient(_MostlyBaseClient):
@@ -141,13 +140,13 @@ class _MostlyConnectorsClient(_MostlyBaseClient):
         )
         return response
 
-    def _locations(self, connector_id: str, prefix: str = "") -> _list:
+    def _locations(self, connector_id: str, prefix: str = "") -> list:
         response = self.request(
             verb=GET, path=[connector_id, "locations"], params={"prefix": prefix}
         )
         return response
 
-    def _schema(self, connector_id: str, location: str) -> _list[dict[str, Any]]:
+    def _schema(self, connector_id: str, location: str) -> list[dict[str, Any]]:
         response = self.request(
             verb=GET, path=[connector_id, "schema"], params={"location": location}
         )
