@@ -14,7 +14,8 @@
 
 import time
 from pathlib import Path
-from typing import Callable, Union, Any, Optional
+from typing import Union, Any
+from collections.abc import Callable
 
 import pandas as pd
 import rich
@@ -159,16 +160,16 @@ Seed = Union[pd.DataFrame, str, Path, list[dict[str, Any]]]
 
 
 def harmonize_sd_config(
-    generator: Union[Generator, str, None] = None,
-    get_generator: Union[Callable[[str], Generator], None] = None,
-    size: Union[int, dict[str, int], None] = None,
-    seed: Union[Seed, dict[str, Seed], None] = None,
-    config: Union[SyntheticDatasetConfig, SyntheticProbeConfig, dict, None] = None,
-    config_type: Union[
-        type[SyntheticDatasetConfig], type[SyntheticProbeConfig], None
-    ] = None,
-    name: Optional[str] = None,
-) -> Union[SyntheticDatasetConfig, SyntheticProbeConfig]:
+    generator: Generator | str | None = None,
+    get_generator: Callable[[str], Generator] | None = None,
+    size: int | dict[str, int] | None = None,
+    seed: Seed | dict[str, Seed] | None = None,
+    config: SyntheticDatasetConfig | SyntheticProbeConfig | dict | None = None,
+    config_type: (
+        type[SyntheticDatasetConfig] | type[SyntheticProbeConfig] | None
+    ) = None,
+    name: str | None = None,
+) -> SyntheticDatasetConfig | SyntheticProbeConfig:
     config_type = config_type or SyntheticDatasetConfig
     if config is None:
         config = config_type()

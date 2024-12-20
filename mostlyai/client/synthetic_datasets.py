@@ -15,7 +15,8 @@
 import io
 import re
 import zipfile
-from typing import Any, Iterator, Optional, Union
+from typing import Any
+from collections.abc import Iterator
 
 import pandas as pd
 
@@ -41,8 +42,8 @@ class _MostlySyntheticDatasetsClient(_MostlyBaseClient):
         self,
         offset: int = 0,
         limit: int = 50,
-        status: Optional[Union[str, list[str]]] = None,
-        search_term: Optional[str] = None,
+        status: str | list[str] | None = None,
+        search_term: str | None = None,
     ) -> Iterator[SyntheticDatasetListItem]:
         """
         List synthetic datasets.
@@ -83,8 +84,7 @@ class _MostlySyntheticDatasetsClient(_MostlyBaseClient):
             status=status,
             search_term=search_term,
         ) as paginator:
-            for item in paginator:
-                yield item
+            yield from paginator
 
     def get(self, synthetic_dataset_id: str) -> SyntheticDataset:
         """
@@ -110,7 +110,7 @@ class _MostlySyntheticDatasetsClient(_MostlyBaseClient):
         return response
 
     def create(
-        self, config: Union[SyntheticDatasetConfig, dict[str, Any]]
+        self, config: SyntheticDatasetConfig | dict[str, Any]
     ) -> SyntheticDataset:
         """
         Create a synthetic dataset. The synthetic dataset will be in the NEW state and will need to be generated before it can be used.
@@ -155,7 +155,7 @@ class _MostlySyntheticDatasetsClient(_MostlyBaseClient):
     def _update(
         self,
         synthetic_dataset_id: str,
-        config: Union[SyntheticDatasetPatchConfig, dict[str, Any]],
+        config: SyntheticDatasetPatchConfig | dict[str, Any],
     ) -> SyntheticDataset:
         response = self.request(
             verb=PATCH,
@@ -181,8 +181,8 @@ class _MostlySyntheticDatasetsClient(_MostlyBaseClient):
         self,
         synthetic_dataset_id: str,
         ds_format: SyntheticDatasetFormat = SyntheticDatasetFormat.parquet,
-        short_lived_file_token: Optional[str] = None,
-    ) -> (bytes, Optional[str]):
+        short_lived_file_token: str | None = None,
+    ) -> (bytes, str | None):
         response = self.request(
             verb=GET,
             path=[synthetic_dataset_id, "download"],
@@ -208,7 +208,7 @@ class _MostlySyntheticDatasetsClient(_MostlyBaseClient):
         return content_bytes, filename
 
     def _data(
-        self, synthetic_dataset_id: str, short_lived_file_token: Optional[str]
+        self, synthetic_dataset_id: str, short_lived_file_token: str | None
     ) -> dict[str, pd.DataFrame]:
         # download pqt
         pqt_zip_bytes, filename = self._download(
@@ -218,7 +218,7 @@ class _MostlySyntheticDatasetsClient(_MostlyBaseClient):
         )
         # read each parquet file into a pandas dataframe
         with zipfile.ZipFile(io.BytesIO(pqt_zip_bytes), "r") as z:
-            dir_list = set([name.split("/")[0] for name in z.namelist()])
+            dir_list = {name.split("/")[0] for name in z.namelist()}
             dfs = {}
             for table in dir_list:
                 pqt_files = [
@@ -262,8 +262,8 @@ class _MostlySyntheticProbesClient(_MostlyBaseClient):
     SECTION = ["synthetic-probes"]
 
     def create(
-        self, config: Union[SyntheticProbeConfig, dict[str, Any]]
-    ) -> Union[pd.DataFrame, dict[str, pd.DataFrame]]:
+        self, config: SyntheticProbeConfig | dict[str, Any]
+    ) -> pd.DataFrame | dict[str, pd.DataFrame]:
         """
         Create a synthetic probe.
 

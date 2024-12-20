@@ -16,7 +16,7 @@ import base64
 import io
 import warnings
 from pathlib import Path
-from typing import Union, Any, Literal
+from typing import Any, Literal
 
 import pandas as pd
 import csv
@@ -25,7 +25,7 @@ warnings.simplefilter("always", DeprecationWarning)
 
 
 def convert_to_base64(
-    df: Union[pd.DataFrame, list[dict[str, Any]]],
+    df: pd.DataFrame | list[dict[str, Any]],
     format: Literal["parquet", "jsonl"] = "parquet",
 ) -> str:
     # Save the DataFrame to a buffer in Parquet / JSONL format
@@ -42,7 +42,7 @@ def convert_to_base64(
     return base64_encoded_str
 
 
-def read_table_from_path(path: Union[str, Path]) -> (str, pd.DataFrame):
+def read_table_from_path(path: str | Path) -> (str, pd.DataFrame):
     # read data from file
     fn = str(path)
     if fn.lower().endswith((".pqt", ".parquet")):

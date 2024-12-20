@@ -4,7 +4,7 @@
 
 [Package Documentation](https://mostly-ai.github.io/mostlyai/) | [Platform Documentation](https://mostly.ai/docs) | [Usage Examples](https://mostly-ai.github.io/mostlyai/api_client/)
 
-The official Python SDK for [MOSTLY AI](https://app.mostly.ai/), the #1 platform for high-fidelity privacy-safe **Synthetic Data**. 
+The official Python SDK for [MOSTLY AI](https://app.mostly.ai/), the #1 platform for high-fidelity privacy-safe **Synthetic Data**.
 
 This toolkit allows you to programmatically create, browse and manage the 3 key resources of the MOSTLY AI platform:
 
@@ -38,7 +38,7 @@ from mostlyai import MostlyAI
 
 # initialize client
 mostly = MostlyAI(
-    api_key='INSERT_YOUR_API_KEY',   # or set env var `MOSTLYAI_API_KEY` 
+    api_key='INSERT_YOUR_API_KEY',   # or set env var `MOSTLYAI_API_KEY`
     base_url='https://app.mostly.ai' # or set env var `MOSTLYAI_BASE_URL`
 )
 
@@ -59,7 +59,7 @@ df_synthetic = sd.data()
 ## Further Resources
 
 * [MOSTLY AI Website](https://mostly.ai/)
-* [MOSTLY AI Blog](https://mostly.ai/blog) 
+* [MOSTLY AI Blog](https://mostly.ai/blog)
 * [Platform Documentation](https://mostly.ai/docs)
 * [OpenAPI Documentation](https://api-docs.mostly.ai/)
 * [MOSTLY AI @ GitHub](https://github.com/mostly-ai/)

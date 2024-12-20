@@ -30,9 +30,9 @@ g = mostly.train(config={
                 'max_training_time': 2,   # - limit training time (in minutes)
                 # model, max_epochs,,..   # further model configurations (optional)
             },
-            # columns, keys, compute,..   # further table configurations (optional)  
+            # columns, keys, compute,..   # further table configurations (optional)
         }]
-    }, 
+    },
     start=True,                           # start training immediately (default: True)
     wait=True,                            # wait for completion (default: True)
 )
@@ -49,7 +49,7 @@ Create a new Synthetic Dataset via a batch job to conditionally generate 100'000
 
 ```python
 df_seed = pd.DataFrame({
-    'age': [28] * 100_000, 
+    'age': [28] * 100_000,
     'native_country': ['Mexico', 'Cuba'] * 50_000
 })
 sd = mostly.generate(g, seed=df_seed)
@@ -73,7 +73,7 @@ df_original_seasons = pd.read_csv(f'{repo_url}/raw/dev/baseball/batting.csv.gz')
 df_original_seasons = df_original_seasons[['players_id', 'year', 'team', 'G', 'AB', 'HR']]
 
 # instantiate client
-mostly = MostlyAI()    
+mostly = MostlyAI()
 
 # train a generator
 g = mostly.train(config={
@@ -81,7 +81,7 @@ g = mostly.train(config={
     'tables': [{                          # provide list of table(s)
         'name': 'players',                # name of the table
         'data': df_original_players,      # the original data as pd.DataFrame
-        'primary_key': 'id', 
+        'primary_key': 'id',
     }, {
         'name': 'seasons',                # name of the table
         'data': df_original_seasons,      # the original data as pd.DataFrame

@@ -19,7 +19,7 @@ from __future__ import annotations
 
 from datetime import datetime
 from enum import Enum
-from typing import Any, Dict, List, Optional, ClassVar, Union, Literal, Annotated
+from typing import Any, ClassVar, Literal, Annotated
 import pandas as pd
 from pathlib import Path
 from pydantic import field_validator
@@ -34,10 +34,10 @@ class AboutService(CustomBaseModel):
     General information about the service.
     """
 
-    version: Optional[str] = Field(
+    version: str | None = Field(
         None, description="The version number of the service.", examples=["v209"]
     )
-    assistant: Optional[bool] = Field(
+    assistant: bool | None = Field(
         None, description="A flag indicating if the assistant is enabled."
     )
 
@@ -57,21 +57,21 @@ class PermissionLevel(str, Enum):
 
 
 class UserSettingsProfileUpdateConfig(CustomBaseModel):
-    first_name: Optional[str] = Field(
+    first_name: str | None = Field(
         None, alias="firstName", description="First name of a user", max_length=30
     )
-    last_name: Optional[str] = Field(
+    last_name: str | None = Field(
         None, alias="lastName", description="Last name of a user", max_length=30
     )
 
 
 class UserSettingsAssistantUpdateConfig(CustomBaseModel):
-    about_user_message: Optional[str] = Field(
+    about_user_message: str | None = Field(
         None,
         alias="aboutUserMessage",
         description="The instruction what the Assistant should know about the user to provide better response",
     )
-    about_model_message: Optional[str] = Field(
+    about_model_message: str | None = Field(
         None,
         alias="aboutModelMessage",
         description="The instruction how the Assistant should respond",
@@ -79,19 +79,19 @@ class UserSettingsAssistantUpdateConfig(CustomBaseModel):
 
 
 class Credits(CustomBaseModel):
-    current: Optional[float] = Field(
+    current: float | None = Field(
         None, description="The credit balance for the current time period"
     )
-    limit: Optional[float] = Field(
+    limit: float | None = Field(
         None,
         description="The credit limit for the current time period. If empty, then there is no limit.",
     )
-    period_start: Optional[datetime] = Field(
+    period_start: datetime | None = Field(
         None,
         alias="periodStart",
         description="The UTC date and time when the current time period started",
     )
-    period_end: Optional[datetime] = Field(
+    period_end: datetime | None = Field(
         None,
         alias="periodEnd",
         description="The UTC date and time when the current time period ends",
@@ -99,31 +99,31 @@ class Credits(CustomBaseModel):
 
 
 class ParallelTrainingJobs(CustomBaseModel):
-    current: Optional[int] = Field(
+    current: int | None = Field(
         None, description="The number of currently running training jobs"
     )
-    limit: Optional[int] = Field(
+    limit: int | None = Field(
         None,
         description="The maximum number of running training jobs at any time. If empty, then there is no limit.",
     )
 
 
 class ParallelGenerationJobs(CustomBaseModel):
-    current: Optional[int] = Field(
+    current: int | None = Field(
         None, description="The number of currently running generation jobs."
     )
-    limit: Optional[int] = Field(
+    limit: int | None = Field(
         None,
         description="The maximum number of running generation jobs at any time. If empty, then there is no limit.",
     )
 
 
 class UserUsage(CustomBaseModel):
-    credits: Optional[Credits] = None
-    parallel_training_jobs: Optional[ParallelTrainingJobs] = Field(
+    credits: Credits | None = None
+    parallel_training_jobs: ParallelTrainingJobs | None = Field(
         None, alias="parallelTrainingJobs"
     )
-    parallel_generation_jobs: Optional[ParallelGenerationJobs] = Field(
+    parallel_generation_jobs: ParallelGenerationJobs | None = Field(
         None, alias="parallelGenerationJobs"
     )
 
@@ -153,29 +153,29 @@ class Metadata(CustomBaseModel):
     The metadata of a resource.
     """
 
-    created_at: Optional[datetime] = Field(
+    created_at: datetime | None = Field(
         None,
         alias="createdAt",
         description="The UTC date and time when the resource has been created.\n",
         examples=["2023‐09‐07T18:40:39Z"],
     )
-    owner_id: Optional[str] = Field(
+    owner_id: str | None = Field(
         None,
         alias="ownerId",
         description="The unique identifier of the owner of the entity.",
     )
-    owner_name: Optional[str] = Field(
+    owner_name: str | None = Field(
         None, alias="ownerName", description="The name of the owner of the entity."
     )
-    current_user_permission_level: Optional[PermissionLevel] = Field(
+    current_user_permission_level: PermissionLevel | None = Field(
         None, alias="currentUserPermissionLevel"
     )
-    current_user_like_status: Optional[bool] = Field(
+    current_user_like_status: bool | None = Field(
         None,
         alias="currentUserLikeStatus",
         description="A boolean indicating whether the user has liked the entity or not",
     )
-    short_lived_file_token: Optional[str] = Field(
+    short_lived_file_token: str | None = Field(
         None,
         alias="shortLivedFileToken",
         description="An auto-generated short-lived file token (`slft`) for accessing resource artefacts.\nThe token is always restricted to a single resource, only valid for 60 minutes, and \nonly accepted by API endpoints that allow to download single files.\n",
@@ -237,10 +237,10 @@ class ConnectorUsage(CustomBaseModel):
     Usage statistics of a connector.
     """
 
-    no_of_shares: Optional[int] = Field(
+    no_of_shares: int | None = Field(
         None, alias="noOfShares", description="Number of shares of this connector."
     )
-    no_of_generators: Optional[int] = Field(
+    no_of_generators: int | None = Field(
         None,
         alias="noOfGenerators",
         description="Number of generators using this connector.",
@@ -257,7 +257,7 @@ class ConnectorListItem(CustomBaseModel):
     type: ConnectorType
     access_type: ConnectorAccessType = Field(..., alias="accessType")
     metadata: Metadata
-    usage: Optional[ConnectorUsage] = None
+    usage: ConnectorUsage | None = None
 
 
 class Connector(CustomBaseModel):
@@ -270,12 +270,12 @@ class Connector(CustomBaseModel):
     name: str = Field(..., description="The name of a connector.")
     type: ConnectorType
     access_type: ConnectorAccessType = Field(..., alias="accessType")
-    config: Optional[Dict[str, Any]] = None
-    secrets: Optional[Dict[str, str]] = None
-    ssl: Optional[Dict[str, str]] = None
-    metadata: Optional[Metadata] = None
-    usage: Optional[ConnectorUsage] = None
-    table_id: Optional[str] = Field(
+    config: dict[str, Any] | None = None
+    secrets: dict[str, str] | None = None
+    ssl: dict[str, str] | None = None
+    metadata: Metadata | None = None
+    usage: ConnectorUsage | None = None
+    table_id: str | None = Field(
         None,
         alias="tableId",
         description="Optional. ID of a source table or a synthetic table, that this connector belongs to.\nIf not set, then this connector is managed independently of any generator or synthetic dataset.\n",
@@ -284,11 +284,11 @@ class Connector(CustomBaseModel):
 
     def update(
         self,
-        name: Optional[str] = None,
-        config: Optional[dict[str, Any]] = None,
-        secrets: Optional[dict[str, str]] = None,
-        ssl: Optional[dict[str, str]] = None,
-        test_connection: Optional[bool] = True,
+        name: str | None = None,
+        config: dict[str, Any] | None = None,
+        secrets: dict[str, str] | None = None,
+        ssl: dict[str, str] | None = None,
+        test_connection: bool | None = True,
     ) -> None:
         """
         Update a connector with specific parameters.
@@ -493,14 +493,14 @@ class ConnectorConfig(CustomBaseModel):
 
     """
 
-    name: Optional[str] = Field(None, description="The name of a connector.")
+    name: str | None = Field(None, description="The name of a connector.")
     type: ConnectorType
-    access_type: Optional[ConnectorAccessType] = Field(
+    access_type: ConnectorAccessType | None = Field(
         ConnectorAccessType.source, alias="accessType"
     )
-    config: Optional[Dict[str, Any]] = None
-    secrets: Optional[Dict[str, str]] = None
-    ssl: Optional[Dict[str, str]] = None
+    config: dict[str, Any] | None = None
+    secrets: dict[str, str] | None = None
+    ssl: dict[str, str] | None = None
 
 
 class ConnectorPatchConfig(CustomBaseModel):
@@ -509,10 +509,10 @@ class ConnectorPatchConfig(CustomBaseModel):
 
     """
 
-    name: Optional[str] = Field(None, description="The name of a connector.")
-    config: Optional[Dict[str, Any]] = None
-    secrets: Optional[Dict[str, str]] = None
-    ssl: Optional[Dict[str, str]] = None
+    name: str | None = Field(None, description="The name of a connector.")
+    config: dict[str, Any] | None = None
+    secrets: dict[str, str] | None = None
+    ssl: dict[str, str] | None = None
 
 
 class GeneratorUsage(CustomBaseModel):
@@ -520,25 +520,25 @@ class GeneratorUsage(CustomBaseModel):
     Usage statistics of a generator.
     """
 
-    total_datapoints: Optional[int] = Field(
+    total_datapoints: int | None = Field(
         None,
         alias="totalDatapoints",
         description="The total number of datapoints generated by this generator.",
     )
-    total_compute_time: Optional[int] = Field(
+    total_compute_time: int | None = Field(
         None,
         alias="totalComputeTime",
         description="The total compute time in seconds used for training this generator.\nThis is the sum of the compute time of all trained tasks.\n",
     )
-    no_of_synthetic_datasets: Optional[int] = Field(
+    no_of_synthetic_datasets: int | None = Field(
         None,
         alias="noOfSyntheticDatasets",
         description="Number of synthetic datasets generated by this generator.",
     )
-    no_of_shares: Optional[int] = Field(
+    no_of_shares: int | None = Field(
         None, alias="noOfShares", description="Number of shares of this generator."
     )
-    no_of_likes: Optional[int] = Field(
+    no_of_likes: int | None = Field(
         None, alias="noOfLikes", description="Number of likes of this generator."
     )
 
@@ -553,26 +553,26 @@ class SourceColumnValueRange(CustomBaseModel):
 
     """
 
-    min: Optional[str] = Field(
+    min: str | None = Field(
         None,
         description="The minimum value of the column. For dates, this is represented in ISO format.",
     )
-    max: Optional[str] = Field(
+    max: str | None = Field(
         None,
         description="The maximum value of the column. For dates, this is represented in ISO format.",
     )
-    values: Optional[List[str]] = Field(
+    values: list[str] | None = Field(
         None,
         description="The list of distinct values of the column. Limited to a maximum of 1000 values.",
     )
-    has_null: Optional[bool] = Field(
+    has_null: bool | None = Field(
         None, description="If true, null value was detected within the column."
     )
 
 
 class SourceForeignKey(CustomBaseModel):
     id: str = Field(..., description="The unique identifier of a foreign key.")
-    column: Optional[str] = Field(None, description="The column name of a foreign key.")
+    column: str | None = Field(None, description="The column name of a foreign key.")
     referenced_table: str = Field(
         ...,
         alias="referencedTable",
@@ -603,10 +603,8 @@ class GeneratorPatchConfig(CustomBaseModel):
     The configuration for updating a generator.
     """
 
-    name: Optional[str] = Field(None, description="The name of a generator.")
-    description: Optional[str] = Field(
-        None, description="The description of a generator."
-    )
+    name: str | None = Field(None, description="The name of a generator.")
+    description: str | None = Field(None, description="The description of a generator.")
 
 
 class GeneratorImportFromFileConfig(CustomBaseModel):
@@ -620,7 +618,7 @@ class SourceForeignKeyConfig(CustomBaseModel):
         alias="referencedTable",
         description="The table name of the referenced table. That table must have a primary key already defined.",
     )
-    is_context: Optional[bool] = Field(
+    is_context: bool | None = Field(
         None,
         alias="isContext",
         description="If true, then the foreign key will be considered as a context relation.\nNote, that only one foreign key relation per table can be a context relation.\n",
@@ -628,7 +626,7 @@ class SourceForeignKeyConfig(CustomBaseModel):
 
 
 class SourceForeignKeyPatchConfig(CustomBaseModel):
-    is_context: Optional[bool] = Field(
+    is_context: bool | None = Field(
         None,
         alias="isContext",
         description="If true, then the foreign key will be considered as a context relation.\nNote, that only one foreign key relation per table can be a context relation.\n",
@@ -663,8 +661,8 @@ class StepCode(str, Enum):
 
 
 class ProgressValue(CustomBaseModel):
-    value: Optional[int] = None
-    max: Optional[int] = None
+    value: int | None = None
+    max: int | None = None
 
 
 class ProgressStatus(str, Enum):
@@ -697,27 +695,27 @@ class SyntheticDatasetUsage(CustomBaseModel):
     Usage statistics of a synthetic dataset.
     """
 
-    total_datapoints: Optional[int] = Field(
+    total_datapoints: int | None = Field(
         None,
         alias="totalDatapoints",
         description="The number of datapoints in the synthetic dataset",
     )
-    total_credits: Optional[float] = Field(
+    total_credits: float | None = Field(
         None,
         alias="totalCredits",
         description="The number of credits used for the synthetic dataset",
     )
-    total_compute_time: Optional[int] = Field(
+    total_compute_time: int | None = Field(
         None,
         alias="totalComputeTime",
         description="The total compute time in seconds used for generating this synthetic dataset.\nThis is the sum of the compute time of all trained tasks.\n",
     )
-    no_of_shares: Optional[int] = Field(
+    no_of_shares: int | None = Field(
         None,
         alias="noOfShares",
         description="Number of shares of this synthetic dataset.",
     )
-    no_of_likes: Optional[int] = Field(
+    no_of_likes: int | None = Field(
         None,
         alias="noOfLikes",
         description="Number of likes of this synthetic dataset.",
@@ -732,16 +730,16 @@ class SyntheticDatasetListItem(CustomBaseModel):
     id: str = Field(..., description="The unique identifier of a synthetic dataset.")
     metadata: Metadata
     name: str = Field(..., description="The name of a synthetic dataset.")
-    description: Optional[str] = Field(
+    description: str | None = Field(
         None, description="The description of a synthetic dataset."
     )
     generation_status: ProgressStatus = Field(..., alias="generationStatus")
-    generation_time: Optional[datetime] = Field(
+    generation_time: datetime | None = Field(
         None,
         alias="generationTime",
         description="The UTC date and time when the generation has finished.",
     )
-    usage: Optional[SyntheticDatasetUsage] = None
+    usage: SyntheticDatasetUsage | None = None
 
 
 class SyntheticDatasetFormat(str, Enum):
@@ -786,37 +784,37 @@ class SyntheticDatasetDelivery(CustomBaseModel):
 
 
 class SyntheticDatasetPatchConfig(CustomBaseModel):
-    name: Optional[str] = Field(None, description="The name of a synthetic dataset.")
-    description: Optional[str] = Field(
+    name: str | None = Field(None, description="The name of a synthetic dataset.")
+    description: str | None = Field(
         None, description="The description of a synthetic dataset."
     )
-    delivery: Optional[SyntheticDatasetDelivery] = None
+    delivery: SyntheticDatasetDelivery | None = None
 
 
 class AssistantLiteLlmExtraItem(CustomBaseModel):
-    key: Optional[str] = None
-    value: Optional[str] = None
+    key: str | None = None
+    value: str | None = None
 
 
 class LiteLlm(CustomBaseModel):
-    model: Optional[str] = Field(
+    model: str | None = Field(
         None,
         description="The LiteLLM model of the assistant. See https://docs.litellm.ai/docs/providers.",
         examples=[["openai/gpt-3.5-turbo", "mistral/mistral-tiny"]],
     )
-    api_key: Optional[str] = Field(
+    api_key: str | None = Field(
         None,
         alias="apiKey",
         description="The API key for the selected LiteLLM model. See https://docs.litellm.ai/docs/providers.",
     )
-    extra: Optional[List[AssistantLiteLlmExtraItem]] = Field(
+    extra: list[AssistantLiteLlmExtraItem] | None = Field(
         None,
         description="Any additional configuration parameters for the selected LiteLLM model. See https://docs.litellm.ai/docs/providers.",
     )
 
 
 class DataLlm(CustomBaseModel):
-    api_key: Optional[str] = Field(
+    api_key: str | None = Field(
         None,
         alias="apiKey",
         description="The API key for the DataLLM service. See https://data.mostly.ai.",
@@ -828,22 +826,22 @@ class AssistantSettings(CustomBaseModel):
     Additional optional assistant settings used for LiteLLM
     """
 
-    is_enabled: Optional[bool] = Field(
+    is_enabled: bool | None = Field(
         None, alias="isEnabled", description="If true, the assistant is enabled."
     )
-    lite_llm: Optional[LiteLlm] = Field(None, alias="liteLlm")
-    data_llm: Optional[DataLlm] = Field(None, alias="dataLlm")
-    system_instructions: Optional[str] = Field(
+    lite_llm: LiteLlm | None = Field(None, alias="liteLlm")
+    data_llm: DataLlm | None = Field(None, alias="dataLlm")
+    system_instructions: str | None = Field(
         None,
         alias="systemInstructions",
         description="The system instructions of the assistant",
     )
-    custom_instructions: Optional[str] = Field(
+    custom_instructions: str | None = Field(
         None,
         alias="customInstructions",
         description="The custom instructions of the assistant",
     )
-    default_system_instructions: Optional[str] = Field(
+    default_system_instructions: str | None = Field(
         None,
         alias="defaultSystemInstructions",
         description="The system instructions of the assistant",
@@ -890,20 +888,18 @@ class AssistantMessage(CustomBaseModel):
     A complete message.
     """
 
-    id: Optional[str] = Field(
+    id: str | None = Field(
         None, description="The unique identifier of a assistant message."
     )
-    role: Optional[AssistantMessageRole] = None
-    content_type: Optional[AssistantMessageContentType] = Field(
-        None, alias="contentType"
-    )
-    content: Optional[str] = Field(
+    role: AssistantMessageRole | None = None
+    content_type: AssistantMessageContentType | None = Field(None, alias="contentType")
+    content: str | None = Field(
         None, description="The content of a message", max_length=65000, min_length=0
     )
-    finish_reason: Optional[AssistantMessageFinishReason] = Field(
+    finish_reason: AssistantMessageFinishReason | None = Field(
         None, alias="finishReason"
     )
-    tokens_consumed: Optional[int] = Field(
+    tokens_consumed: int | None = Field(
         None,
         alias="tokensConsumed",
         description="The number of tokens consumed by the assistant message.",
@@ -915,23 +911,21 @@ class AssistantMessageDelta(CustomBaseModel):
     A partial message delta generated by streamed model responses.
     """
 
-    id: Optional[str] = Field(
+    id: str | None = Field(
         None, description="The unique identifier of a assistant message."
     )
-    role: Optional[AssistantMessageRole] = None
-    content_type: Optional[AssistantMessageContentType] = Field(
-        None, alias="contentType"
-    )
-    delta: Optional[str] = Field(
+    role: AssistantMessageRole | None = None
+    content_type: AssistantMessageContentType | None = Field(None, alias="contentType")
+    delta: str | None = Field(
         None,
         description="The partial content of a message",
         max_length=65000,
         min_length=1,
     )
-    finish_reason: Optional[AssistantMessageFinishReason] = Field(
+    finish_reason: AssistantMessageFinishReason | None = Field(
         None, alias="finishReason"
     )
-    tokens_consumed: Optional[int] = Field(
+    tokens_consumed: int | None = Field(
         None,
         alias="tokensConsumed",
         description="The number of tokens consumed by the model.",
@@ -939,12 +933,12 @@ class AssistantMessageDelta(CustomBaseModel):
 
 
 class AssistantThreadUsage(CustomBaseModel):
-    no_of_shares: Optional[int] = Field(
+    no_of_shares: int | None = Field(
         None,
         alias="noOfShares",
         description="Number of shares of this assistant thread.",
     )
-    total_tokens_consumed: Optional[int] = Field(
+    total_tokens_consumed: int | None = Field(
         None,
         alias="totalTokensConsumed",
         description="The total number of tokens consumed by the thread.",
@@ -952,11 +946,11 @@ class AssistantThreadUsage(CustomBaseModel):
 
 
 class AssistantThreadConfig(CustomBaseModel):
-    name: Optional[str] = Field(None, description="The name of a assistant thread.")
+    name: str | None = Field(None, description="The name of a assistant thread.")
 
 
 class AssistantThreadPatchConfig(CustomBaseModel):
-    name: Optional[str] = Field(None, description="The name of a assistant thread.")
+    name: str | None = Field(None, description="The name of a assistant thread.")
 
 
 class AssistantMessageConfig(CustomBaseModel):
@@ -964,16 +958,14 @@ class AssistantMessageConfig(CustomBaseModel):
     Submit a new message
     """
 
-    stream: Optional[bool] = Field(
+    stream: bool | None = Field(
         True,
         description="Whether to stream back partial progress. If set, message deltas will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a data: [DONE] message.",
     )
-    content: Optional[str] = Field(
+    content: str | None = Field(
         None, description="The content of a message", max_length=65000, min_length=0
     )
-    content_type: Optional[AssistantMessageContentType] = Field(
-        None, alias="contentType"
-    )
+    content_type: AssistantMessageContentType | None = Field(None, alias="contentType")
 
 
 class ComputeType(str, Enum):
@@ -990,10 +982,10 @@ class ComputeResources(CustomBaseModel):
     A set of available hardware resources for a compute resource.
     """
 
-    cpus: Optional[int] = Field(None, description="The number of CPU cores")
-    memory: Optional[float] = Field(None, description="The amount of memory in GB")
-    gpus: Optional[int] = Field(0, description="The number of GPUs")
-    gpu_memory: Optional[float] = Field(
+    cpus: int | None = Field(None, description="The number of CPU cores")
+    memory: float | None = Field(None, description="The amount of memory in GB")
+    gpus: int | None = Field(0, description="The number of GPUs")
+    gpu_memory: float | None = Field(
         0, alias="gpuMemory", description="The amount of GPU memory in GB"
     )
 
@@ -1003,10 +995,10 @@ class ComputeListItem(CustomBaseModel):
     Essential compute details for listings.
     """
 
-    id: Optional[str] = None
-    type: Optional[ComputeType] = None
-    name: Optional[str] = None
-    resources: Optional[ComputeResources] = None
+    id: str | None = None
+    type: ComputeType | None = None
+    name: str | None = None
+    resources: ComputeResources | None = None
 
 
 class Compute(CustomBaseModel):
@@ -1014,13 +1006,13 @@ class Compute(CustomBaseModel):
     A compute resource for executing tasks.
     """
 
-    id: Optional[str] = None
-    name: Optional[str] = None
-    type: Optional[ComputeType] = None
-    config: Optional[Dict[str, Any]] = None
-    secrets: Optional[Dict[str, Any]] = None
-    resources: Optional[ComputeResources] = None
-    order_index: Optional[int] = Field(
+    id: str | None = None
+    name: str | None = None
+    type: ComputeType | None = None
+    config: dict[str, Any] | None = None
+    secrets: dict[str, Any] | None = None
+    resources: ComputeResources | None = None
+    order_index: int | None = Field(
         None,
         alias="orderIndex",
         description="The index for determining the sort order when listing computes",
@@ -1032,12 +1024,12 @@ class ComputeConfig(CustomBaseModel):
     The configuration for creating a new compute resource.
     """
 
-    name: Optional[str] = None
-    type: Optional[ComputeType] = None
-    resources: Optional[ComputeResources] = None
-    config: Optional[Dict[str, Any]] = None
-    secrets: Optional[Dict[str, Any]] = None
-    order_index: Optional[int] = Field(
+    name: str | None = None
+    type: ComputeType | None = None
+    resources: ComputeResources | None = None
+    config: dict[str, Any] | None = None
+    secrets: dict[str, Any] | None = None
+    order_index: int | None = Field(
         None,
         alias="orderIndex",
         description="The index for determining the sort order when listing computes",
@@ -1045,12 +1037,12 @@ class ComputeConfig(CustomBaseModel):
 
 
 class ComputePatchConfig(CustomBaseModel):
-    name: Optional[str] = None
-    type: Optional[ComputeType] = None
-    resources: Optional[ComputeResources] = None
-    config: Optional[Dict[str, Any]] = None
-    secrets: Optional[Dict[str, Any]] = None
-    order_index: Optional[int] = Field(
+    name: str | None = None
+    type: ComputeType | None = None
+    resources: ComputeResources | None = None
+    config: dict[str, Any] | None = None
+    secrets: dict[str, Any] | None = None
+    order_index: int | None = Field(
         None,
         alias="orderIndex",
         description="The index for determining the sort order when listing computes",
@@ -1062,27 +1054,27 @@ class UsageReportPeriod(CustomBaseModel):
     The usage report for a specific month
     """
 
-    period_start: Optional[datetime] = Field(
+    period_start: datetime | None = Field(
         None,
         alias="periodStart",
         description="The UTC date and time when the reported time period started",
     )
-    period_end: Optional[datetime] = Field(
+    period_end: datetime | None = Field(
         None,
         alias="periodEnd",
         description="The UTC date and time when the reported time period started",
     )
-    total_datapoints: Optional[int] = Field(
+    total_datapoints: int | None = Field(
         None,
         alias="totalDatapoints",
         description="The number of datapoints generated during the reported period",
     )
-    total_rows: Optional[int] = Field(
+    total_rows: int | None = Field(
         None,
         alias="totalRows",
         description="The number of rows generated during the reported period",
     )
-    total_credits: Optional[float] = Field(
+    total_credits: float | None = Field(
         None,
         alias="totalCredits",
         description="The number of credits used during the reported period",
@@ -1144,7 +1136,7 @@ class RebalancingConfig(CustomBaseModel):
         ...,
         description="The name of the column to be rebalanced.  Only applicable for a subject table.\nOnly applicable for categorical columns.\n",
     )
-    probabilities: Dict[str, float] = Field(
+    probabilities: dict[str, float] = Field(
         ...,
         description="The target distribution of samples values.\nThe keys are the categorical values, and the values are the probabilities.\n",
         examples=[[{"US": 0.8}, {"male": 0.5, "female": 0.5}]],
@@ -1156,7 +1148,7 @@ class ImputationConfig(CustomBaseModel):
     Configure imputation.
     """
 
-    columns: List[str] = Field(
+    columns: list[str] = Field(
         ...,
         description="The names of the columns to be imputed.\nImputed columns will suppress the sampling of NULL values.\n",
     )
@@ -1174,7 +1166,7 @@ class FairnessConfig(CustomBaseModel):
     target_column: str = Field(
         ..., alias="targetColumn", description="The name of the target column."
     )
-    sensitive_columns: List[str] = Field(
+    sensitive_columns: list[str] = Field(
         ..., alias="sensitiveColumns", description="The names of the sensitive columns."
     )
 
@@ -1186,21 +1178,21 @@ class DifferentialPrivacyConfig(CustomBaseModel):
 
     """
 
-    max_epsilon: Optional[float] = Field(
+    max_epsilon: float | None = Field(
         None,
         alias="maxEpsilon",
         description="Specifies the maximum allowable epsilon value. If the training process exceeds this threshold, it will be terminated early. Only model checkpoints with epsilon values below this limit will be retained. \nIf not provided, the training will proceed without early termination based on epsilon constraints.\n",
         ge=0.0,
         le=10000.0,
     )
-    noise_multiplier: Optional[float] = Field(
+    noise_multiplier: float | None = Field(
         1.5,
         alias="noiseMultiplier",
         description="The ratio of the standard deviation of the Gaussian noise to the L2-sensitivity of the function to which the noise is added (How much noise to add).\n",
         ge=0.0,
         le=10000.0,
     )
-    max_grad_norm: Optional[float] = Field(
+    max_grad_norm: float | None = Field(
         1.0,
         alias="maxGradNorm",
         description="The maximum norm of the per-sample gradients for training the model with differential privacy.\n",
@@ -1233,52 +1225,52 @@ class Accuracy(CustomBaseModel):
 
     """
 
-    overall: Optional[float] = Field(
+    overall: float | None = Field(
         None,
         description="Overall accuracy of synthetic data, averaged across univariate, bivariate, and coherence.\n",
         ge=0.0,
         le=1.0,
     )
-    univariate: Optional[float] = Field(
+    univariate: float | None = Field(
         None,
         description="Average accuracy of discretized univariate distributions.\n",
         ge=0.0,
         le=1.0,
     )
-    bivariate: Optional[float] = Field(
+    bivariate: float | None = Field(
         None,
         description="Average accuracy of discretized bivariate distributions.\n",
         ge=0.0,
         le=1.0,
     )
-    coherence: Optional[float] = Field(
+    coherence: float | None = Field(
         None,
         description="Average accuracy of discretized coherence distributions. Only applicable for sequential data.\n",
         ge=0.0,
         le=1.0,
     )
-    overall_max: Optional[float] = Field(
+    overall_max: float | None = Field(
         None,
         alias="overallMax",
         description="Expected overall accuracy of a same-sized holdout. Serves as a reference for `overall`.\n",
         ge=0.0,
         le=1.0,
     )
-    univariate_max: Optional[float] = Field(
+    univariate_max: float | None = Field(
         None,
         alias="univariateMax",
         description="Expected univariate accuracy of a same-sized holdout. Serves as a reference for `univariate`.\n",
         ge=0.0,
         le=1.0,
     )
-    bivariate_max: Optional[float] = Field(
+    bivariate_max: float | None = Field(
         None,
         alias="bivariateMax",
         description="Expected bivariate accuracy of a same-sized holdout. Serves as a reference for `bivariate`.\n",
         ge=0.0,
         le=1.0,
     )
-    coherence_max: Optional[float] = Field(
+    coherence_max: float | None = Field(
         None,
         alias="coherenceMax",
         description="Expected coherence accuracy of a same-sized holdout. Serves as a reference for `coherence`.\n",
@@ -1309,28 +1301,28 @@ class Similarity(CustomBaseModel):
 
     """
 
-    cosine_similarity_training_synthetic: Optional[float] = Field(
+    cosine_similarity_training_synthetic: float | None = Field(
         None,
         alias="cosineSimilarityTrainingSynthetic",
         description="Cosine similarity between training and synthetic centroids.",
         ge=-1.0,
         le=1.0,
     )
-    cosine_similarity_training_holdout: Optional[float] = Field(
+    cosine_similarity_training_holdout: float | None = Field(
         None,
         alias="cosineSimilarityTrainingHoldout",
         description="Cosine similarity between training and holdout centroids. Serves as a reference for `cosine_similarity_training_synthetic`.",
         ge=-1.0,
         le=1.0,
     )
-    discriminator_auc_training_synthetic: Optional[float] = Field(
+    discriminator_auc_training_synthetic: float | None = Field(
         None,
         alias="discriminatorAUCTrainingSynthetic",
         description="Cross-validated AUC of a discriminative model to distinguish between training and synthetic samples.",
         ge=0.0,
         le=1.0,
     )
-    discriminator_auc_training_holdout: Optional[float] = Field(
+    discriminator_auc_training_holdout: float | None = Field(
         None,
         alias="discriminatorAUCTrainingHoldout",
         description="Cross-validated AUC of a discriminative model to distinguish between training and holdout samples. Serves as a reference for `discriminator_auc_training_synthetic`.",
@@ -1359,33 +1351,33 @@ class Distances(CustomBaseModel):
 
     """
 
-    ims_training: Optional[float] = Field(
+    ims_training: float | None = Field(
         None,
         alias="imsTraining",
         description="Share of synthetic samples that are identical to a training sample.",
         ge=0.0,
         le=1.0,
     )
-    ims_holdout: Optional[float] = Field(
+    ims_holdout: float | None = Field(
         None,
         alias="imsHoldout",
         description="Share of synthetic samples that are identical to a holdout sample. Serves as a reference for `ims_training`.",
         ge=0.0,
         le=1.0,
     )
-    dcr_training: Optional[float] = Field(
+    dcr_training: float | None = Field(
         None,
         alias="dcrTraining",
         description="Average L2 nearest-neighbor distance between synthetic and training samples.",
         ge=0.0,
     )
-    dcr_holdout: Optional[float] = Field(
+    dcr_holdout: float | None = Field(
         None,
         alias="dcrHoldout",
         description="Average L2 nearest-neighbor distance between synthetic and holdout samples. Serves as a reference for `dcr_training`.",
         ge=0.0,
     )
-    dcr_share: Optional[float] = Field(
+    dcr_share: float | None = Field(
         None,
         alias="dcrShare",
         description="Share of synthetic samples that are closer to a training sample than to a holdout sample. This should not be significantly larger than 50%.",
@@ -1399,17 +1391,17 @@ class BaseResource(CustomBaseModel):
     A set of common properties across resources.
     """
 
-    id: Optional[str] = Field(None, description="The unique identifier of the entity.")
-    name: Optional[str] = Field(None, description="The name of the entity.")
-    uri: Optional[str] = Field(
+    id: str | None = Field(None, description="The unique identifier of the entity.")
+    name: str | None = Field(None, description="The name of the entity.")
+    uri: str | None = Field(
         None,
         description="The API service endpoint of the entity",
         examples=["/generators/94c77249-42bf-443a-8e17-6e18a19d60b8"],
     )
-    current_user_permission_level: Optional[PermissionLevel] = Field(
+    current_user_permission_level: PermissionLevel | None = Field(
         None, alias="currentUserPermissionLevel"
     )
-    current_user_like_status: Optional[bool] = Field(
+    current_user_like_status: bool | None = Field(
         None,
         alias="currentUserLikeStatus",
         description="A boolean indicating whether the user has liked the entity or not",
@@ -1430,14 +1422,14 @@ class User(CustomBaseModel):
     A user of the service.
     """
 
-    id: Optional[str] = Field(None, description="The unique identifier of a user.")
-    first_name: Optional[str] = Field(
+    id: str | None = Field(None, description="The unique identifier of a user.")
+    first_name: str | None = Field(
         None, alias="firstName", description="First name of a user", max_length=30
     )
-    last_name: Optional[str] = Field(
+    last_name: str | None = Field(
         None, alias="lastName", description="Last name of a user", max_length=30
     )
-    email: Optional[str] = Field(None, description="The email of a user")
+    email: str | None = Field(None, description="The email of a user")
 
 
 class CurrentUser(CustomBaseModel):
@@ -1445,17 +1437,17 @@ class CurrentUser(CustomBaseModel):
     Information on the current user.
     """
 
-    id: Optional[str] = Field(None, description="The unique identifier of a user.")
-    first_name: Optional[str] = Field(
+    id: str | None = Field(None, description="The unique identifier of a user.")
+    first_name: str | None = Field(
         None, alias="firstName", description="First name of a user", max_length=30
     )
-    last_name: Optional[str] = Field(
+    last_name: str | None = Field(
         None, alias="lastName", description="Last name of a user", max_length=30
     )
-    email: Optional[str] = Field(None, description="The email of a user")
-    settings: Optional[Dict[str, Any]] = None
-    usage: Optional[UserUsage] = None
-    unread_notifications: Optional[int] = Field(
+    email: str | None = Field(None, description="The email of a user")
+    settings: dict[str, Any] | None = None
+    usage: UserUsage | None = None
+    unread_notifications: int | None = Field(
         None,
         alias="unreadNotifications",
         description="Number of unread notifications for the user",
@@ -1467,8 +1459,8 @@ class UserSettingsUpdateConfig(CustomBaseModel):
     The configuration for updating user settings.
     """
 
-    profile: Optional[UserSettingsProfileUpdateConfig] = None
-    assistant: Optional[UserSettingsAssistantUpdateConfig] = None
+    profile: UserSettingsProfileUpdateConfig | None = None
+    assistant: UserSettingsAssistantUpdateConfig | None = None
 
 
 class Notification(CustomBaseModel):
@@ -1485,7 +1477,7 @@ class Notification(CustomBaseModel):
         alias="createdAt",
         description="The UTC date and time when the notification has been created.",
     )
-    resource_uri: Optional[str] = Field(
+    resource_uri: str | None = Field(
         None,
         alias="resourceUri",
         description="The API service endpoint of the entity",
@@ -1499,17 +1491,15 @@ class GeneratorListItem(CustomBaseModel):
     """
 
     id: str = Field(..., description="The unique identifier of a generator.")
-    name: Optional[str] = Field(None, description="The name of a generator.")
-    description: Optional[str] = Field(
-        None, description="The description of a generator."
-    )
+    name: str | None = Field(None, description="The name of a generator.")
+    description: str | None = Field(None, description="The description of a generator.")
     training_status: ProgressStatus = Field(..., alias="trainingStatus")
-    training_time: Optional[datetime] = Field(
+    training_time: datetime | None = Field(
         None,
         alias="trainingTime",
         description="The UTC date and time when the training has finished.",
     )
-    usage: Optional[GeneratorUsage] = None
+    usage: GeneratorUsage | None = None
     metadata: Metadata
 
 
@@ -1518,8 +1508,8 @@ class Probe(CustomBaseModel):
     The generated synthetic samples returned as a result of the probe.
     """
 
-    name: Optional[str] = Field(None, description="The name of the table.")
-    rows: Optional[List[Dict[str, Any]]] = None
+    name: str | None = Field(None, description="The name of the table.")
+    rows: list[dict[str, Any]] | None = None
 
 
 class SourceColumn(CustomBaseModel):
@@ -1534,7 +1524,7 @@ class SourceColumn(CustomBaseModel):
         description="If true, the column will be included in the training.\nIf false, the column will be excluded from the training.\n",
     )
     model_encoding_type: ModelEncodingType = Field(..., alias="modelEncodingType")
-    value_range: Optional[SourceColumnValueRange] = Field(None, alias="valueRange")
+    value_range: SourceColumnValueRange | None = Field(None, alias="valueRange")
 
 
 class GeneratorCloneConfig(CustomBaseModel):
@@ -1542,7 +1532,7 @@ class GeneratorCloneConfig(CustomBaseModel):
     The configuration for cloning a generator.
     """
 
-    training_status: Optional[GeneratorCloneTrainingStatus] = Field(
+    training_status: GeneratorCloneTrainingStatus | None = Field(
         GeneratorCloneTrainingStatus.new, alias="trainingStatus"
     )
 
@@ -1553,7 +1543,7 @@ class SourceColumnConfig(CustomBaseModel):
     """
 
     name: str = Field(..., description="The name of a source column.")
-    model_encoding_type: Optional[ModelEncodingType] = Field(
+    model_encoding_type: ModelEncodingType | None = Field(
         ModelEncodingType.auto, alias="modelEncodingType"
     )
 
@@ -1563,11 +1553,11 @@ class SourceColumnPatchConfig(CustomBaseModel):
     The configuration for updating a source column.
     """
 
-    included: Optional[bool] = Field(
+    included: bool | None = Field(
         None,
         description="If true, the column will be included in the training.\nIf false, the column will be excluded from the training.\n",
     )
-    model_encoding_type: Optional[ModelEncodingType] = Field(
+    model_encoding_type: ModelEncodingType | None = Field(
         ModelEncodingType.auto, alias="modelEncodingType"
     )
 
@@ -1577,7 +1567,7 @@ class ModelConfiguration(CustomBaseModel):
     The training configuration for the model
     """
 
-    model: Optional[str] = Field(
+    model: str | None = Field(
         None,
         description="The model to be used for training.",
         examples=[
@@ -1590,60 +1580,60 @@ class ModelConfiguration(CustomBaseModel):
             ]
         ],
     )
-    max_sample_size: Optional[int] = Field(
+    max_sample_size: int | None = Field(
         None,
         alias="maxSampleSize",
         description="The maximum number of samples to consider for training.\nIf not provided, then all available samples will be taken.\n",
         ge=1,
         le=1000000000,
     )
-    batch_size: Optional[int] = Field(
+    batch_size: int | None = Field(
         None,
         alias="batchSize",
         description="The batch size used for training the model.\nIf not provided, batchSize will be chosen automatically.\n",
         ge=1,
         le=1000000,
     )
-    max_training_time: Optional[float] = Field(
+    max_training_time: float | None = Field(
         10,
         alias="maxTrainingTime",
         description="The maximum number of minutes to train the model.",
         ge=0.0,
         le=100000.0,
     )
-    max_epochs: Optional[float] = Field(
+    max_epochs: float | None = Field(
         100,
         alias="maxEpochs",
         description="The maximum number of epochs to train the model.",
         ge=0.0,
         le=100000.0,
     )
-    max_sequence_window: Optional[int] = Field(
+    max_sequence_window: int | None = Field(
         100,
         alias="maxSequenceWindow",
         description="The maximum sequence window to consider for training.\nOnly applicable for TABULAR models.\n",
         ge=1,
         le=100000,
     )
-    enable_flexible_generation: Optional[bool] = Field(
+    enable_flexible_generation: bool | None = Field(
         True,
         alias="enableFlexibleGeneration",
         description="If true, then the trained generator can be used for rebalancing and imputation.\nOnly applicable for TABULAR models.\n",
     )
-    value_protection: Optional[bool] = Field(
+    value_protection: bool | None = Field(
         True,
         alias="valueProtection",
         description="Defines if Rare Category, Extreme value, or Sequence length protection will be applied.\n",
     )
-    rare_category_replacement_method: Optional[RareCategoryReplacementMethod] = Field(
+    rare_category_replacement_method: RareCategoryReplacementMethod | None = Field(
         RareCategoryReplacementMethod.constant,
         alias="rareCategoryReplacementMethod",
         description="Specifies, if the rare categories for categoricals will be replaced by a constant\n_RARE_ or by a sample from non-rare categories.\nOnly applicable if valueProtection is set to True.\n",
     )
-    differential_privacy: Optional[DifferentialPrivacyConfig] = Field(
+    differential_privacy: DifferentialPrivacyConfig | None = Field(
         None, alias="differentialPrivacy"
     )
-    compute: Optional[str] = None
+    compute: str | None = None
 
 
 class ProgressStep(CustomBaseModel):
@@ -1651,34 +1641,34 @@ class ProgressStep(CustomBaseModel):
     The progress of a step.
     """
 
-    id: Optional[str] = None
-    model_label: Optional[str] = Field(
+    id: str | None = None
+    model_label: str | None = Field(
         None,
         alias="modelLabel",
         description="The unique label for the model, consisting of table name and a suffix for the model type.\nThis will be empty for steps that are not related to a model.\n",
         examples=[["census:tabular", "census:language"]],
     )
-    compute_name: Optional[str] = Field(None, alias="computeName")
-    restarts: Optional[int] = Field(
+    compute_name: str | None = Field(None, alias="computeName")
+    restarts: int | None = Field(
         None, description="The number of previous restarts for the corresponding task."
     )
-    step_code: Optional[StepCode] = Field(None, alias="stepCode")
-    start_date: Optional[datetime] = Field(
+    step_code: StepCode | None = Field(None, alias="stepCode")
+    start_date: datetime | None = Field(
         None,
         alias="startDate",
         description="The UTC date and time when the job has started.\nIf the job has not started yet, then this is None.\n",
         examples=["2024-01-25T12:34:56Z"],
     )
-    end_date: Optional[datetime] = Field(
+    end_date: datetime | None = Field(
         None,
         alias="endDate",
         description="The UTC date and time when the job has ended.\nIf the job is still, then this is None.\n",
         examples=["2024-01-25T12:34:56Z"],
     )
-    messages: Optional[List[Dict[str, Any]]] = None
-    error_message: Optional[str] = Field(None, alias="errorMessage")
-    progress: Optional[ProgressValue] = None
-    status: Optional[ProgressStatus] = None
+    messages: list[dict[str, Any]] | None = None
+    error_message: str | None = Field(None, alias="errorMessage")
+    progress: ProgressValue | None = None
+    status: ProgressStatus | None = None
 
 
 class SyntheticTableConfiguration(CustomBaseModel):
@@ -1686,42 +1676,42 @@ class SyntheticTableConfiguration(CustomBaseModel):
     The sample configuration for a synthetic table
     """
 
-    sample_size: Optional[int] = Field(
+    sample_size: int | None = Field(
         None,
         alias="sampleSize",
         description="Number of generated samples. Only applicable for subject tables.\nIf neither size nor seed is provided, then the default behavior for Synthetic Datasets is to generate the\nsame size of samples as the original, and the default behavior for Synthetic Datasets is to generate one\nsubject only.\n",
         ge=1,
     )
-    sample_seed_connector_id: Optional[str] = Field(
+    sample_seed_connector_id: str | None = Field(
         None,
         alias="sampleSeedConnectorId",
         description="The connector id of the seed data for conditional generation.\nOnly applicable for subject tables.\n",
     )
-    sample_seed_dict: Optional[str] = Field(
+    sample_seed_dict: str | None = Field(
         None,
         alias="sampleSeedDict",
         description="The base64-encoded string derived from a json line file containing the specified sample seed data.\n",
     )
-    sample_seed_data: Optional[str] = Field(
+    sample_seed_data: str | None = Field(
         None,
         alias="sampleSeedData",
         description="The base64-encoded string derived from a Parquet file containing the specified sample seed data.\n",
     )
-    sampling_temperature: Optional[float] = Field(
+    sampling_temperature: float | None = Field(
         None,
         alias="samplingTemperature",
         description="temperature for sampling",
         ge=0.0,
         le=2.0,
     )
-    sampling_top_p: Optional[float] = Field(
+    sampling_top_p: float | None = Field(
         None, alias="samplingTopP", description="topP for sampling", ge=0.9, le=1.0
     )
-    rebalancing: Optional[RebalancingConfig] = None
-    imputation: Optional[ImputationConfig] = None
-    fairness: Optional[FairnessConfig] = None
-    tabular_compute: Optional[str] = Field(None, alias="tabularCompute")
-    language_compute: Optional[str] = Field(None, alias="languageCompute")
+    rebalancing: RebalancingConfig | None = None
+    imputation: ImputationConfig | None = None
+    fairness: FairnessConfig | None = None
+    tabular_compute: str | None = Field(None, alias="tabularCompute")
+    language_compute: str | None = Field(None, alias="languageCompute")
 
     @field_validator("sample_seed_dict", mode="before")
     @classmethod
@@ -1743,7 +1733,7 @@ class SyntheticTablePatchConfig(CustomBaseModel):
     The configuration for updating a synthetic table.
     """
 
-    configuration: Optional[SyntheticTableConfiguration] = None
+    configuration: SyntheticTableConfiguration | None = None
 
 
 class SyntheticTableConfig(CustomBaseModel):
@@ -1755,7 +1745,7 @@ class SyntheticTableConfig(CustomBaseModel):
         ...,
         description="The name of a synthetic table. This matches the name of a corresponding SourceTable.",
     )
-    configuration: Optional[SyntheticTableConfiguration] = None
+    configuration: SyntheticTableConfiguration | None = None
 
 
 class AssistantThreadListItem(CustomBaseModel):
@@ -1765,8 +1755,8 @@ class AssistantThreadListItem(CustomBaseModel):
 
     id: str = Field(..., description="The unique identifier of a assistant thread.")
     metadata: Metadata
-    name: Optional[str] = Field(None, description="The name of a assistant thread.")
-    usage: Optional[AssistantThreadUsage] = None
+    name: str | None = Field(None, description="The name of a assistant thread.")
+    usage: AssistantThreadUsage | None = None
 
 
 class AssistantThread(CustomBaseModel):
@@ -1774,19 +1764,19 @@ class AssistantThread(CustomBaseModel):
     A assistant thread.
     """
 
-    id: Optional[str] = Field(
+    id: str | None = Field(
         None, description="The unique identifier of a assistant thread."
     )
-    metadata: Optional[Metadata] = None
-    name: Optional[str] = Field(None, description="The name of a assistant thread.")
-    session_status: Optional[AssistantThreadSessionStatus] = Field(
+    metadata: Metadata | None = None
+    name: str | None = Field(None, description="The name of a assistant thread.")
+    session_status: AssistantThreadSessionStatus | None = Field(
         None, alias="sessionStatus"
     )
-    messages: Optional[List[AssistantMessage]] = Field(
+    messages: list[AssistantMessage] | None = Field(
         None,
         description="List of all existing messages, excluding any system message.\nExample:\n  What's the square root of 9?   role: user        type: text\n  ok, I will write some python   role: assistant   type: text\n  r = math.sqrt(9)\\nr            role: assistant   type: python\n  3                              role: tool        type: console\n  The answer is 3!               role: assistant   type: text\n  Plot me a random barplot       role: user        type: text\n  ... plt.savefig() ...          role: assistant   type: python\n  Here is ![img]() ...           role: assistant   type: text\n  Write me a random file         role: user        type: text\n  ... .to_csv() ...              role: assistant   type: python\n  Here is [file]() ...           role: assistant   type: text\n",
     )
-    usage: Optional[AssistantThreadUsage] = None
+    usage: AssistantThreadUsage | None = None
 
 
 class ModelMetrics(CustomBaseModel):
@@ -1806,18 +1796,18 @@ class ModelMetrics(CustomBaseModel):
 
     """
 
-    accuracy: Optional[Accuracy] = None
-    distances: Optional[Distances] = None
-    similarity: Optional[Similarity] = None
+    accuracy: Accuracy | None = None
+    distances: Distances | None = None
+    similarity: Similarity | None = None
 
 
 class Share(User):
-    permission_level: Optional[PermissionLevel] = Field(None, alias="permissionLevel")
+    permission_level: PermissionLevel | None = Field(None, alias="permissionLevel")
 
 
 class ResourceShares(CustomBaseModel):
-    is_public: Optional[bool] = Field(None, alias="isPublic")
-    shares: Optional[List[Share]] = None
+    is_public: bool | None = Field(None, alias="isPublic")
+    shares: list[Share] | None = None
 
 
 class SourceTable(CustomBaseModel):
@@ -1826,8 +1816,8 @@ class SourceTable(CustomBaseModel):
     """
 
     id: str = Field(..., description="The unique identifier of a source table.")
-    source_connector: Optional[BaseResource] = Field(None, alias="sourceConnector")
-    location: Optional[str] = Field(
+    source_connector: BaseResource | None = Field(None, alias="sourceConnector")
+    location: str | None = Field(
         None,
         description="The location of a source table. Together with the source connector it uniquely\nidentifies a source, and samples data from there.\n",
     )
@@ -1835,26 +1825,26 @@ class SourceTable(CustomBaseModel):
         ...,
         description="The name of a source table. It must be unique within a generator.",
     )
-    primary_key: Optional[str] = Field(
+    primary_key: str | None = Field(
         None, alias="primaryKey", description="The column name of the primary key."
     )
-    columns: List[SourceColumn] = Field(
+    columns: list[SourceColumn] = Field(
         ..., description="The columns of this generator table."
     )
-    foreign_keys: Optional[List[SourceForeignKey]] = Field(
+    foreign_keys: list[SourceForeignKey] | None = Field(
         None, alias="foreignKeys", description="The foreign keys of a table."
     )
-    model_metrics: Optional[ModelMetrics] = Field(None, alias="modelMetrics")
-    language_model_metrics: Optional[ModelMetrics] = Field(
+    model_metrics: ModelMetrics | None = Field(None, alias="modelMetrics")
+    language_model_metrics: ModelMetrics | None = Field(
         None, alias="languageModelMetrics"
     )
-    model_configuration: Optional[ModelConfiguration] = Field(
+    model_configuration: ModelConfiguration | None = Field(
         None, alias="modelConfiguration"
     )
-    language_model_configuration: Optional[ModelConfiguration] = Field(
+    language_model_configuration: ModelConfiguration | None = Field(
         None, alias="languageModelConfiguration"
     )
-    total_rows: Optional[int] = Field(
+    total_rows: int | None = Field(
         None,
         alias="totalRows",
         description="The total number of rows in the source table while fetching data for training.\n",
@@ -1916,34 +1906,34 @@ class SourceTableConfig(CustomBaseModel):
         ...,
         description="The name of a source table. It must be unique within a generator.",
     )
-    source_connector_id: Optional[str] = Field(
+    source_connector_id: str | None = Field(
         None,
         alias="sourceConnectorId",
         description="The unique identifier of a connector.",
     )
-    location: Optional[str] = Field(
+    location: str | None = Field(
         None,
         description="The location of a source table. Together with the source connector it uniquely\nidentifies a source, and samples data from there.\n",
     )
-    data: Optional[str] = Field(
+    data: str | None = Field(
         None,
         description="The base64-encoded string derived from a Parquet file containing the specified source table.\n",
     )
-    model_configuration: Optional[ModelConfiguration] = Field(
+    model_configuration: ModelConfiguration | None = Field(
         None, alias="modelConfiguration"
     )
-    language_model_configuration: Optional[ModelConfiguration] = Field(
+    language_model_configuration: ModelConfiguration | None = Field(
         None, alias="languageModelConfiguration"
     )
-    primary_key: Optional[str] = Field(
+    primary_key: str | None = Field(
         None, alias="primaryKey", description="The column name of the primary key."
     )
-    foreign_keys: Optional[List[SourceForeignKeyConfig]] = Field(
+    foreign_keys: list[SourceForeignKeyConfig] | None = Field(
         None,
         alias="foreignKeys",
         description="The foreign key configurations of this table.",
     )
-    columns: Optional[List[SourceColumnConfig]] = Field(
+    columns: list[SourceColumnConfig] | None = Field(
         None, description="The column configurations of this table."
     )
 
@@ -1958,17 +1948,17 @@ class SourceTablePatchConfig(CustomBaseModel):
     The configuration for updating a source table.
     """
 
-    name: Optional[str] = Field(
+    name: str | None = Field(
         None,
         description="The name of a source table. It must be unique within a generator.",
     )
-    primary_key: Optional[str] = Field(
+    primary_key: str | None = Field(
         None, alias="primaryKey", description="The column name of the primary key."
     )
-    model_configuration: Optional[ModelConfiguration] = Field(
+    model_configuration: ModelConfiguration | None = Field(
         None, alias="modelConfiguration"
     )
-    language_model_configuration: Optional[ModelConfiguration] = Field(
+    language_model_configuration: ModelConfiguration | None = Field(
         None, alias="languageModelConfiguration"
     )
 
@@ -1987,19 +1977,19 @@ class SourceTableAddConfig(CustomBaseModel):
         ...,
         description="The location of a source table. Together with the source connector it uniquely\nidentifies a source, and samples data from there.\n",
     )
-    name: Optional[str] = Field(
+    name: str | None = Field(
         None,
         description="The name of a source table. It must be unique within a generator.",
     )
-    include_children: Optional[bool] = Field(
+    include_children: bool | None = Field(
         None,
         alias="includeChildren",
         description="If true, all tables that are referenced by foreign keys will\nbe included. If false, only the selected table will be included.\n",
     )
-    model_configuration: Optional[ModelConfiguration] = Field(
+    model_configuration: ModelConfiguration | None = Field(
         None, alias="modelConfiguration"
     )
-    language_model_configuration: Optional[ModelConfiguration] = Field(
+    language_model_configuration: ModelConfiguration | None = Field(
         None, alias="languageModelConfiguration"
     )
 
@@ -2009,22 +1999,22 @@ class JobProgress(CustomBaseModel):
     The progress of a job.
     """
 
-    id: Optional[str] = None
-    start_date: Optional[datetime] = Field(
+    id: str | None = None
+    start_date: datetime | None = Field(
         None,
         alias="startDate",
         description="The UTC date and time when the job has started.\nIf the job has not started yet, then this is None.\n",
         examples=["2024-01-25T12:34:56Z"],
     )
-    end_date: Optional[datetime] = Field(
+    end_date: datetime | None = Field(
         None,
         alias="endDate",
         description="The UTC date and time when the job has ended.\nIf the job is still, then this is None.\n",
         examples=["2024-01-25T12:34:56Z"],
     )
-    progress: Optional[ProgressValue] = None
-    status: Optional[ProgressStatus] = None
-    steps: Optional[List[ProgressStep]] = None
+    progress: ProgressValue | None = None
+    status: ProgressStatus | None = None
+    steps: list[ProgressStep] | None = None
 
 
 class SyntheticTable(CustomBaseModel):
@@ -2032,32 +2022,32 @@ class SyntheticTable(CustomBaseModel):
     A synthetic table that will be generated.
     """
 
-    id: Optional[str] = Field(
+    id: str | None = Field(
         None, description="The unique identifier of a synthetic table."
     )
     name: str = Field(
         ...,
         description="The name of a source table. It must be unique within a generator.",
     )
-    configuration: Optional[SyntheticTableConfiguration] = None
-    model_metrics: Optional[ModelMetrics] = Field(None, alias="modelMetrics")
-    language_model_metrics: Optional[ModelMetrics] = Field(
+    configuration: SyntheticTableConfiguration | None = None
+    model_metrics: ModelMetrics | None = Field(None, alias="modelMetrics")
+    language_model_metrics: ModelMetrics | None = Field(
         None, alias="languageModelMetrics"
     )
-    foreign_keys: Optional[List[ForeignKey]] = Field(
+    foreign_keys: list[ForeignKey] | None = Field(
         None, alias="foreignKeys", description="The foreign keys of this table."
     )
-    total_rows: Optional[int] = Field(
+    total_rows: int | None = Field(
         None,
         alias="totalRows",
         description="The total number of rows for that table in the generated synthetic dataset.\n",
     )
-    total_datapoints: Optional[int] = Field(
+    total_datapoints: int | None = Field(
         None,
         alias="totalDatapoints",
         description="The total number of datapoints for that table in the generated synthetic dataset.\n",
     )
-    source_table_total_rows: Optional[int] = Field(
+    source_table_total_rows: int | None = Field(
         None,
         alias="sourceTableTotalRows",
         description="The total number of rows in the source table while fetching data for training.\n",
@@ -2069,15 +2059,15 @@ class SyntheticDatasetConfig(CustomBaseModel):
     The configuration for creating a new synthetic dataset.
     """
 
-    generator_id: Optional[str] = Field(
+    generator_id: str | None = Field(
         None, alias="generatorId", description="The unique identifier of a generator."
     )
-    name: Optional[str] = Field(None, description="The name of a synthetic dataset.")
-    description: Optional[str] = Field(
+    name: str | None = Field(None, description="The name of a synthetic dataset.")
+    description: str | None = Field(
         None, description="The description of a synthetic dataset."
     )
-    tables: Optional[List[SyntheticTableConfig]] = None
-    delivery: Optional[SyntheticDatasetDelivery] = None
+    tables: list[SyntheticTableConfig] | None = None
+    delivery: SyntheticDatasetDelivery | None = None
 
 
 class SyntheticProbeConfig(CustomBaseModel):
@@ -2085,10 +2075,10 @@ class SyntheticProbeConfig(CustomBaseModel):
     The configuration for probing for new synthetic samples.
     """
 
-    generator_id: Optional[str] = Field(
+    generator_id: str | None = Field(
         None, alias="generatorId", description="The unique identifier of a generator."
     )
-    tables: Optional[List[SyntheticTableConfig]] = None
+    tables: list[SyntheticTableConfig] | None = None
 
 
 class Generator(CustomBaseModel):
@@ -2100,27 +2090,25 @@ class Generator(CustomBaseModel):
     """
 
     id: str = Field(..., description="The unique identifier of a generator.")
-    name: Optional[str] = Field(None, description="The name of a generator.")
-    description: Optional[str] = Field(
-        None, description="The description of a generator."
-    )
+    name: str | None = Field(None, description="The name of a generator.")
+    description: str | None = Field(None, description="The description of a generator.")
     training_status: ProgressStatus = Field(..., alias="trainingStatus")
-    training_time: Optional[datetime] = Field(
+    training_time: datetime | None = Field(
         None,
         alias="trainingTime",
         description="The UTC date and time when the training has finished.",
     )
-    usage: Optional[GeneratorUsage] = None
+    usage: GeneratorUsage | None = None
     metadata: Metadata
-    accuracy: Optional[float] = Field(
+    accuracy: float | None = Field(
         None,
         description="The overall accuracy of the trained generator.\nThis is the average of the overall accuracy scores of all trained models.\n",
     )
-    tables: Optional[List[SourceTable]] = Field(
+    tables: list[SourceTable] | None = Field(
         None, description="The tables of this generator"
     )
     OPEN_URL_PARTS: ClassVar[list] = ["d", "generators"]
-    training: Annotated[Optional[Any], Field(exclude=True)] = None
+    training: Annotated[Any | None, Field(exclude=True)] = None
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -2128,8 +2116,8 @@ class Generator(CustomBaseModel):
 
     def update(
         self,
-        name: Optional[str] = None,
-        description: Optional[str] = None,
+        name: str | None = None,
+        description: str | None = None,
     ) -> None:
         """
         Update a generator with specific parameters.
@@ -2167,7 +2155,7 @@ class Generator(CustomBaseModel):
 
     def export_to_file(
         self,
-        file_path: Union[str, Path, None] = None,
+        file_path: str | Path | None = None,
     ) -> Path:
         """
         Export generator and save to file.
@@ -2185,7 +2173,7 @@ class Generator(CustomBaseModel):
         file_path.write_bytes(bytes)
         return file_path
 
-    def clone(self, training_status: Literal["NEW", "CONTINUE"] = "NEW") -> "Generator":
+    def clone(self, training_status: Literal["NEW", "CONTINUE"] = "NEW") -> Generator:
         """
         Clone the generator.
 
@@ -2198,7 +2186,7 @@ class Generator(CustomBaseModel):
         return self.client._clone(generator_id=self.id, training_status=training_status)
 
     class Training:
-        def __init__(self, _generator: "Generator"):
+        def __init__(self, _generator: Generator):
             self.generator = _generator
 
         def start(self) -> None:
@@ -2242,11 +2230,9 @@ class GeneratorConfig(CustomBaseModel):
     The configuration for creating a new generator.
     """
 
-    name: Optional[str] = Field(None, description="The name of a generator.")
-    description: Optional[str] = Field(
-        None, description="The description of a generator."
-    )
-    tables: Optional[List[SourceTableConfig]] = Field(
+    name: str | None = Field(None, description="The name of a generator.")
+    description: str | None = Field(None, description="The description of a generator.")
+    tables: list[SourceTableConfig] | None = Field(
         None, description="The tables of a generator"
     )
 
@@ -2260,29 +2246,29 @@ class SyntheticDataset(CustomBaseModel):
     """
 
     id: str = Field(..., description="The unique identifier of a synthetic dataset.")
-    generator: Optional[BaseResource] = None
+    generator: BaseResource | None = None
     metadata: Metadata
     name: str = Field(..., description="The name of a synthetic dataset.")
-    description: Optional[str] = Field(
+    description: str | None = Field(
         None, description="The description of a synthetic dataset."
     )
     generation_status: ProgressStatus = Field(..., alias="generationStatus")
-    generation_time: Optional[datetime] = Field(
+    generation_time: datetime | None = Field(
         None,
         alias="generationTime",
         description="The UTC date and time when the generation has finished.",
     )
-    tables: Optional[List[SyntheticTable]] = Field(
+    tables: list[SyntheticTable] | None = Field(
         None, description="The tables of this synthetic dataset."
     )
-    delivery: Optional[SyntheticDatasetDelivery] = None
-    accuracy: Optional[float] = Field(
+    delivery: SyntheticDatasetDelivery | None = None
+    accuracy: float | None = Field(
         None,
         description="The overall accuracy of the trained generator.\nThis is the average of the overall accuracy scores of all trained models.\n",
     )
-    usage: Optional[SyntheticDatasetUsage] = None
+    usage: SyntheticDatasetUsage | None = None
     OPEN_URL_PARTS: ClassVar[list] = ["d", "synthetic-datasets"]
-    generation: Annotated[Optional[Any], Field(exclude=True)] = None
+    generation: Annotated[Any | None, Field(exclude=True)] = None
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -2290,9 +2276,9 @@ class SyntheticDataset(CustomBaseModel):
 
     def update(
         self,
-        name: Optional[str] = None,
-        description: Optional[str] = None,
-        delivery: Optional[SyntheticDatasetDelivery] = None,
+        name: str | None = None,
+        description: str | None = None,
+        delivery: SyntheticDatasetDelivery | None = None,
     ) -> None:
         """
         Update a synthetic dataset with specific parameters.
@@ -2334,7 +2320,7 @@ class SyntheticDataset(CustomBaseModel):
     def download(
         self,
         format: SyntheticDatasetFormat = "PARQUET",
-        file_path: Union[str, Path, None] = None,
+        file_path: str | Path | None = None,
     ) -> Path:
         """
         Download synthetic dataset and save to file.
@@ -2359,7 +2345,7 @@ class SyntheticDataset(CustomBaseModel):
 
     def data(
         self, return_type: Literal["auto", "dict"] = "auto"
-    ) -> Union[pd.DataFrame, dict[str, pd.DataFrame]]:
+    ) -> pd.DataFrame | dict[str, pd.DataFrame]:
         """
         Download synthetic dataset and return as dictionary of pandas DataFrames.
 
@@ -2379,7 +2365,7 @@ class SyntheticDataset(CustomBaseModel):
             return dfs
 
     class Generation:
-        def __init__(self, _synthetic_dataset: "SyntheticDataset"):
+        def __init__(self, _synthetic_dataset: SyntheticDataset):
             self.synthetic_dataset = _synthetic_dataset
 
         def start(self) -> None:

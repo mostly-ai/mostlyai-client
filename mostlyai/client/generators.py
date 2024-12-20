@@ -13,7 +13,8 @@
 # limitations under the License.
 
 from pathlib import Path
-from typing import Any, Iterator, Optional, Union
+from typing import Any
+from collections.abc import Iterator
 import re
 
 import pandas as pd
@@ -41,8 +42,8 @@ class _MostlyGeneratorsClient(_MostlyBaseClient):
         self,
         offset: int = 0,
         limit: int = 50,
-        status: Optional[Union[str, list[str]]] = None,
-        search_term: Optional[str] = None,
+        status: str | list[str] | None = None,
+        search_term: str | None = None,
     ) -> Iterator[GeneratorListItem]:
         """
         List generators.
@@ -83,8 +84,7 @@ class _MostlyGeneratorsClient(_MostlyBaseClient):
             status=status,
             search_term=search_term,
         ) as paginator:
-            for item in paginator:
-                yield item
+            yield from paginator
 
     def get(self, generator_id: str) -> Generator:
         """
@@ -107,7 +107,7 @@ class _MostlyGeneratorsClient(_MostlyBaseClient):
         response = self.request(verb=GET, path=[generator_id], response_type=Generator)
         return response
 
-    def create(self, config: Union[GeneratorConfig, dict]) -> Generator:
+    def create(self, config: GeneratorConfig | dict) -> Generator:
         """
         Create a generator. The generator will be in the NEW state and will need to be trained before it can be used.
 
@@ -169,7 +169,7 @@ class _MostlyGeneratorsClient(_MostlyBaseClient):
 
     def import_from_file(
         self,
-        file_path: Union[str, Path],
+        file_path: str | Path,
     ) -> Generator:
         """
         Import a generator from a file.
@@ -203,7 +203,7 @@ class _MostlyGeneratorsClient(_MostlyBaseClient):
     def _export_to_file(
         self,
         generator_id: str,
-    ) -> (bytes, Optional[str]):
+    ) -> (bytes, str | None):
         response = self.request(
             verb=GET,
             path=[generator_id, "export-to-file"],
@@ -223,7 +223,7 @@ class _MostlyGeneratorsClient(_MostlyBaseClient):
         return content_bytes, filename
 
     def _update(
-        self, generator_id: str, config: Union[GeneratorPatchConfig, dict[str, Any]]
+        self, generator_id: str, config: GeneratorPatchConfig | dict[str, Any]
     ) -> Generator:
         response = self.request(
             verb=PATCH,

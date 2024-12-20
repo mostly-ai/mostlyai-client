@@ -40,8 +40,8 @@ g.delete()
 
 # clone a generator
 # 1. re-use configs, and start training from scratch
-g1 = g.clone(training_status="NEW")       
-# 2. or re-use configs, and weights to continue training 
+g1 = g.clone(training_status="NEW")
+# 2. or re-use configs, and weights to continue training
 g2 = g.clone(training_status="CONTINUE")
 ```
 
@@ -102,7 +102,7 @@ df = mostly.probe(g, config: dict | SyntheticDatasetConfig)
 
 ## Connectors
 
-Connectors can be used both as a source of original data for training a generator, as well as a destination for delivering the generated synthetic data samples to. Please see our [Platform Documentation](https://mostly.ai/docs), respectively our [Open API specificiations](https://github.com/mostly-ai/mostly-openapi/blob/main/public-api.yaml) for the full list of available connectors, and their corresponding configuration parameters.  
+Connectors can be used both as a source of original data for training a generator, as well as a destination for delivering the generated synthetic data samples to. Please see our [Platform Documentation](https://mostly.ai/docs), respectively our [Open API specificiations](https://github.com/mostly-ai/mostly-openapi/blob/main/public-api.yaml) for the full list of available connectors, and their corresponding configuration parameters.
 
 ```python
 # create a new connector

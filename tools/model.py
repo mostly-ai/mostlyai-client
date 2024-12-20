@@ -13,7 +13,7 @@
 # limitations under the License.
 
 from pathlib import Path
-from typing import Annotated, Any, ClassVar, Literal, Optional, Union
+from typing import Annotated, Any, ClassVar, Literal
 
 import pandas as pd
 from pydantic import Field, field_validator
@@ -36,11 +36,11 @@ class Connector:
 
     def update(
         self,
-        name: Optional[str] = None,
-        config: Optional[dict[str, Any]] = None,
-        secrets: Optional[dict[str, str]] = None,
-        ssl: Optional[dict[str, str]] = None,
-        test_connection: Optional[bool] = True,
+        name: str | None = None,
+        config: dict[str, Any] | None = None,
+        secrets: dict[str, str] | None = None,
+        ssl: dict[str, str] | None = None,
+        test_connection: bool | None = True,
     ) -> None:
         """
         Update a connector with specific parameters.
@@ -122,7 +122,7 @@ class Connector:
 
 class Generator:
     OPEN_URL_PARTS: ClassVar[list] = ["d", "generators"]
-    training: Annotated[Optional[Any], Field(exclude=True)] = None
+    training: Annotated[Any | None, Field(exclude=True)] = None
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -130,8 +130,8 @@ class Generator:
 
     def update(
         self,
-        name: Optional[str] = None,
-        description: Optional[str] = None,
+        name: str | None = None,
+        description: str | None = None,
     ) -> None:
         """
         Update a generator with specific parameters.
@@ -169,7 +169,7 @@ class Generator:
 
     def export_to_file(
         self,
-        file_path: Union[str, Path, None] = None,
+        file_path: str | Path | None = None,
     ) -> Path:
         """
         Export generator and save to file.
@@ -264,7 +264,7 @@ class SyntheticTableConfiguration:
 
 class SyntheticDataset:
     OPEN_URL_PARTS: ClassVar[list] = ["d", "synthetic-datasets"]
-    generation: Annotated[Optional[Any], Field(exclude=True)] = None
+    generation: Annotated[Any | None, Field(exclude=True)] = None
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -272,9 +272,9 @@ class SyntheticDataset:
 
     def update(
         self,
-        name: Optional[str] = None,
-        description: Optional[str] = None,
-        delivery: Optional[SyntheticDatasetDelivery] = None,
+        name: str | None = None,
+        description: str | None = None,
+        delivery: SyntheticDatasetDelivery | None = None,
     ) -> None:
         """
         Update a synthetic dataset with specific parameters.
@@ -316,7 +316,7 @@ class SyntheticDataset:
     def download(
         self,
         format: SyntheticDatasetFormat = "PARQUET",
-        file_path: Union[str, Path, None] = None,
+        file_path: str | Path | None = None,
     ) -> Path:
         """
         Download synthetic dataset and save to file.
@@ -341,7 +341,7 @@ class SyntheticDataset:
 
     def data(
         self, return_type: Literal["auto", "dict"] = "auto"
-    ) -> Union[pd.DataFrame, dict[str, pd.DataFrame]]:
+    ) -> pd.DataFrame | dict[str, pd.DataFrame]:
         """
         Download synthetic dataset and return as dictionary of pandas DataFrames.
 

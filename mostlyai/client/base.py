@@ -21,11 +21,8 @@ from typing import (
     Any,
     ClassVar,
     Generic,
-    List,
     Literal,
-    Optional,
     TypeVar,
-    Union,
 )
 
 import httpx
@@ -61,8 +58,8 @@ class _MostlyBaseClient:
 
     def __init__(
         self,
-        base_url: Optional[str] = None,
-        api_key: Optional[str] = None,
+        base_url: str | None = None,
+        api_key: str | None = None,
         timeout: float = 60.0,
         ssl_verify: bool = True,
     ):
@@ -86,7 +83,7 @@ class _MostlyBaseClient:
 
     def request(
         self,
-        path: Union[str, List[Any]],
+        path: str | list[Any],
         verb: HttpVerb,
         response_type: type = dict,
         raw_response: bool = False,
@@ -94,7 +91,7 @@ class _MostlyBaseClient:
         do_json_camel_case: bool = True,
         do_response_dict_snake_case: bool = True,
         do_include_client: bool = True,
-        extra_key_values: Optional[dict] = None,
+        extra_key_values: dict | None = None,
         **kwargs,
     ) -> Any:
         """
@@ -240,8 +237,8 @@ class Paginator(Generic[T]):
 
 class CustomBaseModel(BaseModel):
     OPEN_URL_PARTS: ClassVar[list] = None  # ["d", "object-name"]
-    client: Annotated[Optional[Any], Field(exclude=True, repr=False)] = None
-    extra_key_values: Annotated[Optional[dict], Field(exclude=True, repr=False)] = None
+    client: Annotated[Any | None, Field(exclude=True, repr=False)] = None
+    extra_key_values: Annotated[dict | None, Field(exclude=True, repr=False)] = None
     model_config = ConfigDict(protected_namespaces=(), populate_by_name=True)
 
     def _repr_html_(self):
