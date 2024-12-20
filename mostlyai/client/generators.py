@@ -13,7 +13,8 @@
 # limitations under the License.
 
 from pathlib import Path
-from typing import Any, Iterator
+from typing import Any
+from collections.abc import Iterator
 import re
 
 import pandas as pd
@@ -83,8 +84,7 @@ class _MostlyGeneratorsClient(_MostlyBaseClient):
             status=status,
             search_term=search_term,
         ) as paginator:
-            for item in paginator:
-                yield item
+            yield from paginator
 
     def get(self, generator_id: str) -> Generator:
         """

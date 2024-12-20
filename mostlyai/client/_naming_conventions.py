@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import re
-from typing import Callable
+from collections.abc import Callable
 
 
 def _snake_to_camel(snake_str: str) -> str:

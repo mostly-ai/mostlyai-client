@@ -17,7 +17,7 @@ import re
 
 
 def extract_class_contents(filename):
-    with open(filename, "r") as file:
+    with open(filename) as file:
         source = file.read()
 
     parsed_source = ast.parse(source)
@@ -48,7 +48,7 @@ def extract_class_contents(filename):
 
 
 def append_or_replace_in_jinja_template(template_filename, classes_content):
-    with open(template_filename, "r") as file:
+    with open(template_filename) as file:
         template_content = file.read()
 
     for class_name, content in classes_content.items():

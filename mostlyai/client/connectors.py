@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Any, Iterator, List, Dict
+from typing import Any
+from collections.abc import Iterator
 
 from mostlyai.client.base import DELETE, GET, PATCH, POST, Paginator, _MostlyBaseClient
 from mostlyai.domain import (
@@ -65,8 +66,7 @@ class _MostlyConnectorsClient(_MostlyBaseClient):
             access_type=access_type,
             search_term=search_term,
         ) as paginator:
-            for item in paginator:
-                yield item
+            yield from paginator
 
     def get(self, connector_id: str) -> Connector:
         """
@@ -145,7 +145,7 @@ class _MostlyConnectorsClient(_MostlyBaseClient):
         )
         return response
 
-    def _schema(self, connector_id: str, location: str) -> List[Dict[str, Any]]:
+    def _schema(self, connector_id: str, location: str) -> list[dict[str, Any]]:
         response = self.request(
             verb=GET, path=[connector_id, "schema"], params={"location": location}
         )

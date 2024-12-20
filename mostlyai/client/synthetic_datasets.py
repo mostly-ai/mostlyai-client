@@ -15,7 +15,8 @@
 import io
 import re
 import zipfile
-from typing import Any, Iterator
+from typing import Any
+from collections.abc import Iterator
 
 import pandas as pd
 
@@ -83,8 +84,7 @@ class _MostlySyntheticDatasetsClient(_MostlyBaseClient):
             status=status,
             search_term=search_term,
         ) as paginator:
-            for item in paginator:
-                yield item
+            yield from paginator
 
     def get(self, synthetic_dataset_id: str) -> SyntheticDataset:
         """
@@ -218,7 +218,7 @@ class _MostlySyntheticDatasetsClient(_MostlyBaseClient):
         )
         # read each parquet file into a pandas dataframe
         with zipfile.ZipFile(io.BytesIO(pqt_zip_bytes), "r") as z:
-            dir_list = set([name.split("/")[0] for name in z.namelist()])
+            dir_list = {name.split("/")[0] for name in z.namelist()}
             dfs = {}
             for table in dir_list:
                 pqt_files = [

@@ -14,7 +14,8 @@
 
 import time
 from pathlib import Path
-from typing import Callable, Any
+from typing import Any
+from collections.abc import Callable
 
 import pandas as pd
 import rich

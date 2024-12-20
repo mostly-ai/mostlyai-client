@@ -26,7 +26,7 @@ enum_replace_dict = {
 
 def postprocess_model_file(file_path):
     # Read the contents of the file
-    with open(file_path, "r") as file:
+    with open(file_path) as file:
         lines = file.readlines()
 
     # Modify the contents
