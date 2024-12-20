@@ -39,6 +39,12 @@ def test_end_to_end(tmp_path):
     assert g.name == "Test 1"
     g.delete()
 
+    # config via sugar
+    df.to_csv(tmp_path / "test.csv", index=False)
+    g = mostly.train(data=df, name="Test 1", start=False)
+    assert g.name == "Test 1"
+    g.delete()
+
     # config via dict
     config = {
         "name": "Test 1",

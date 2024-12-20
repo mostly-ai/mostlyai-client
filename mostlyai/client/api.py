@@ -284,21 +284,40 @@ class MostlyAI(_MostlyBaseClient):
 
         See [GeneratorConfig](api_domain.md#mostlyai.domain.GeneratorConfig) for more information on the available configuration parameters.
 
-        Example configuration using short-hand notation:
+        Example of short-hand notation, reading data from path:
             ```python
             from mostlyai import MostlyAI
             mostly = MostlyAI()
             g = mostly.train(
+                data='https://github.com/mostly-ai/public-demo-data/raw/dev/census/census.csv.gz',
+            )
+            ```
+
+        Example of short-hand notation, passing data as pandas DataFrame:
+            ```python
+            # read original data
+            import pandas as pd
+            df_original = pd.read_csv('https://github.com/mostly-ai/public-demo-data/raw/dev/titanic/titanic.csv')
+            # instantiate client
+            from mostlyai import MostlyAI
+            mostly = MostlyAI()
+            # train generator
+            g = mostly.train(
                 name='census',
-                data=df_original
+                data=df_original,
             )
             ```
 
         Example configuration using GeneratorConfig:
             ```python
+            # read original data
+            import pandas as pd
+            df_original = pd.read_csv('https://github.com/mostly-ai/public-demo-data/raw/dev/titanic/titanic.csv')
+            # instantiate client
             from mostlyai import MostlyAI
-            from mostlyai.domain import GeneratorConfig, SourceTableConfig
             mostly = MostlyAI()
+            # configure generator via GeneratorConfig
+            from mostlyai.domain import GeneratorConfig, SourceTableConfig
             g = mostly.train(
                 config=GeneratorConfig(
                     name='census',
@@ -314,8 +333,13 @@ class MostlyAI(_MostlyBaseClient):
 
         Example configuration using a dictionary:
             ```python
+            # read original data
+            import pandas as pd
+            df_original = pd.read_csv('https://github.com/mostly-ai/public-demo-data/raw/dev/titanic/titanic.csv')
+            # instantiate client
             from mostlyai import MostlyAI
             mostly = MostlyAI()
+            # configure generator via dictionary
             g = mostly.train(
                 config={
                     'name': 'census',

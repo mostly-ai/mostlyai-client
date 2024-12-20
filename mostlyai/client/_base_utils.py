@@ -55,8 +55,9 @@ def read_table_from_path(path: str | Path) -> (str, pd.DataFrame):
                     header = f.readline()
                 sniffer = csv.Sniffer()
                 delimiter = sniffer.sniff(header, ",;|\t' :").delimiter
-            except csv.Error:
-                # happens for example for single column CSV files
+            except (csv.Error, FileNotFoundError):
+                # csv.Error: happens for example for single column CSV files
+                # FileNotFoundError: happens for example for remote files
                 pass
         df = pd.read_csv(fn, low_memory=False, delimiter=delimiter)
     if fn.lower().endswith((".gz", ".gzip", ".bz2")):
