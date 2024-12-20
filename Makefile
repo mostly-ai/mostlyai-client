@@ -23,8 +23,7 @@ COMMON_OPTIONS = \
 	--input-file-type openapi \
 	--output $(PUBLIC_API_OUTPUT_PATH) \
 	--snake-case-field \
-	--target-python-version 3.11 \
-	--use-annotated \
+	--target-python-version 3.10 \
 	--use-schema-description \
 	--field-constraints \
 	--collapse-root-models \
