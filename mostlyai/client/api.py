@@ -13,7 +13,7 @@
 # limitations under the License.
 
 from pathlib import Path
-from typing import Any, Optional, Union, Literal
+from typing import Any, Literal
 
 import pandas as pd
 import rich
@@ -82,8 +82,8 @@ class MostlyAI(_MostlyBaseClient):
 
     def __init__(
         self,
-        base_url: Optional[str] = None,
-        api_key: Optional[str] = None,
+        base_url: str | None = None,
+        api_key: str | None = None,
         timeout: float = 60.0,
         ssl_verify: bool = True,
     ):
@@ -115,8 +115,8 @@ class MostlyAI(_MostlyBaseClient):
 
     def connect(
         self,
-        config: Union[ConnectorConfig, dict[str, Any]],
-        test_connection: Optional[bool] = True,
+        config: ConnectorConfig | dict[str, Any],
+        test_connection: bool | None = True,
     ) -> Connector:
         """
         Create a connector and optionally validate the connection before saving.
@@ -272,9 +272,9 @@ class MostlyAI(_MostlyBaseClient):
 
     def train(
         self,
-        config: Union[GeneratorConfig, dict, None] = None,
-        data: Union[pd.DataFrame, str, Path, None] = None,
-        name: Optional[str] = None,
+        config: GeneratorConfig | dict | None = None,
+        data: pd.DataFrame | str | Path | None = None,
+        name: str | None = None,
         start: bool = True,
         wait: bool = True,
         progress_bar: bool = True,
@@ -381,11 +381,11 @@ class MostlyAI(_MostlyBaseClient):
 
     def generate(
         self,
-        generator: Union[Generator, str, None] = None,
-        config: Union[SyntheticDatasetConfig, dict, None] = None,
-        size: Union[int, dict[str, int], None] = None,
-        seed: Union[Seed, dict[str, Seed], None] = None,
-        name: Optional[str] = None,
+        generator: Generator | str | None = None,
+        config: SyntheticDatasetConfig | dict | None = None,
+        size: int | dict[str, int] | None = None,
+        seed: Seed | dict[str, Seed] | None = None,
+        name: str | None = None,
         start: bool = True,
         wait: bool = True,
         progress_bar: bool = True,
@@ -486,12 +486,12 @@ class MostlyAI(_MostlyBaseClient):
 
     def probe(
         self,
-        generator: Union[Generator, str, None] = None,
-        size: Union[int, dict[str, int], None] = None,
-        seed: Union[Seed, dict[str, Seed], None] = None,
-        config: Union[SyntheticProbeConfig, dict, None] = None,
+        generator: Generator | str | None = None,
+        size: int | dict[str, int] | None = None,
+        seed: Seed | dict[str, Seed] | None = None,
+        config: SyntheticProbeConfig | dict | None = None,
         return_type: Literal["auto", "dict"] = "auto",
-    ) -> Union[pd.DataFrame, dict[str, pd.DataFrame]]:
+    ) -> pd.DataFrame | dict[str, pd.DataFrame]:
         """
         Probe a generator.
 
@@ -586,7 +586,7 @@ class MostlyAI(_MostlyBaseClient):
         """
         return self.request(verb=GET, path=["about"], response_type=AboutService)
 
-    def models(self, model_type: Union[str, ModelType]) -> list[str]:
+    def models(self, model_type: str | ModelType) -> list[str]:
         """
         Retrieve a list of available models of a specific type.
 

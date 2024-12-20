@@ -14,7 +14,7 @@
 
 import time
 from pathlib import Path
-from typing import Callable, Union, Any, Optional
+from typing import Callable, Any
 
 import pandas as pd
 import rich
@@ -36,8 +36,6 @@ from mostlyai.domain import (
     SyntheticProbeConfig,
     SyntheticTableConfiguration,
     SyntheticTableConfig,
-    Connector,
-    SyntheticDataset,
 )
 from mostlyai.client._naming_conventions import map_camel_to_snake_case
 
@@ -155,20 +153,18 @@ def _get_subject_table_names(generator: Generator) -> list[str]:
     return subject_tables
 
 
-Seed = Union[pd.DataFrame, str, Path, list[dict[str, Any]]]
+Seed = pd.DataFrame | str | Path | list[dict[str, Any]]
 
 
 def harmonize_sd_config(
-    generator: Union[Generator, str, None] = None,
-    get_generator: Union[Callable[[str], Generator], None] = None,
-    size: Union[int, dict[str, int], None] = None,
-    seed: Union[Seed, dict[str, Seed], None] = None,
-    config: Union[SyntheticDatasetConfig, SyntheticProbeConfig, dict, None] = None,
-    config_type: Union[
-        type[SyntheticDatasetConfig], type[SyntheticProbeConfig], None
-    ] = None,
-    name: Optional[str] = None,
-) -> Union[SyntheticDatasetConfig, SyntheticProbeConfig]:
+    generator: Generator | str | None = None,
+    get_generator: Callable[[str], Generator] | None = None,
+    size: int | dict[str, int] | None = None,
+    seed: Seed | dict[str, Seed] | None = None,
+    config: SyntheticDatasetConfig | SyntheticProbeConfig | dict | None = None,
+    config_type: SyntheticDatasetConfig | SyntheticProbeConfig | None = None,
+    name: str | None = None,
+) -> SyntheticDatasetConfig | SyntheticProbeConfig:
     config_type = config_type or SyntheticDatasetConfig
     if config is None:
         config = config_type()
@@ -259,6 +255,3 @@ def harmonize_sd_config(
             )
 
     return config
-
-
-ShareableResource = Union[Connector, Generator, SyntheticDataset]

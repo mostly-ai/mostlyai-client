@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Any, Iterator, Optional, List, Dict, Union
+from typing import Any, Iterator, List, Dict
 
 from mostlyai.client.base import DELETE, GET, PATCH, POST, Paginator, _MostlyBaseClient
 from mostlyai.domain import (
@@ -32,8 +32,8 @@ class _MostlyConnectorsClient(_MostlyBaseClient):
         self,
         offset: int = 0,
         limit: int = 50,
-        access_type: Optional[str] = None,
-        search_term: Optional[str] = None,
+        access_type: str | None = None,
+        search_term: str | None = None,
     ) -> Iterator[ConnectorListItem]:
         """
         List connectors.
@@ -91,8 +91,8 @@ class _MostlyConnectorsClient(_MostlyBaseClient):
 
     def create(
         self,
-        config: Union[ConnectorConfig, dict[str, Any]],
-        test_connection: Optional[bool] = True,
+        config: ConnectorConfig | dict[str, Any],
+        test_connection: bool | None = True,
     ) -> Connector:
         """
         Create a connector and optionally validate the connection before saving.
@@ -120,7 +120,7 @@ class _MostlyConnectorsClient(_MostlyBaseClient):
     def _update(
         self,
         connector_id: str,
-        config: Union[ConnectorPatchConfig, dict[str, Any]],
+        config: ConnectorPatchConfig | dict[str, Any],
     ) -> Connector:
         response = self.request(
             verb=PATCH,

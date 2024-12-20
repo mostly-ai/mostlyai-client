@@ -1,5 +1,5 @@
 # Internal Variables
-PUBLIC_API_FULL_URL = https://raw.githubusercontent.com/mostly-ai/mostly-openapi/refs/heads/main/public-api.yaml
+PUBLIC_API_FULL_URL = https://raw.githubusercontent.com/mostly-ai/mostly-app-v2/refs/heads/dev/public-api/public-api.yaml?token=GHSAT0AAAAAACWJFL5JZEJIZKVP23A24LISZ3FEMJA
 PUBLIC_API_OUTPUT_PATH = mostlyai/domain.py
 
 # Targets
@@ -23,7 +23,8 @@ COMMON_OPTIONS = \
 	--input-file-type openapi \
 	--output $(PUBLIC_API_OUTPUT_PATH) \
 	--snake-case-field \
-	--target-python-version 3.9 \
+	--target-python-version 3.11 \
+	--use-annotated \
 	--use-schema-description \
 	--field-constraints \
 	--collapse-root-models \
@@ -33,6 +34,7 @@ COMMON_OPTIONS = \
 	--output-model-type pydantic_v2.BaseModel \
 	--base-class mostlyai.client.base.CustomBaseModel \
 	--custom-template-dir tools/custom_template
+
 
 .PHONY: clean
 clean: ## Remove .gitignore files
