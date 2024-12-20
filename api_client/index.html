@@ -436,13 +436,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mostlyai-client" class="md-nav__link">
+  <a href="#mostly-ai-client" class="md-nav__link">
     <span class="md-ellipsis">
-      MostlyAI Client
+      MOSTLY AI Client
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="MostlyAI Client">
+    <nav class="md-nav" aria-label="MOSTLY AI Client">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1047,13 +1047,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mostlyai-client" class="md-nav__link">
+  <a href="#mostly-ai-client" class="md-nav__link">
     <span class="md-ellipsis">
-      MostlyAI Client
+      MOSTLY AI Client
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="MostlyAI Client">
+    <nav class="md-nav" aria-label="MOSTLY AI Client">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1560,7 +1560,7 @@
 
 
 <h1 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h1>
-<h2 id="mostlyai-client">MostlyAI Client<a class="headerlink" href="#mostlyai-client" title="Permanent link">&para;</a></h2>
+<h2 id="mostly-ai-client">MOSTLY AI Client<a class="headerlink" href="#mostly-ai-client" title="Permanent link">&para;</a></h2>
 
 
 <div class="doc doc-object doc-class">
@@ -1614,7 +1614,7 @@
                 <code>base_url</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[str]</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1630,7 +1630,7 @@
                 <code>api_key</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[str]</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1698,7 +1698,7 @@
 
 
 <h3 id="mostlyai.client.api.MostlyAI.about" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">about</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.api.MostlyAI.about</span>
 
 
 <a href="#mostlyai.client.api.MostlyAI.about" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -1749,7 +1749,7 @@
 
 
 <h3 id="mostlyai.client.api.MostlyAI.computes" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">computes</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.api.MostlyAI.computes</span>
 
 
 <a href="#mostlyai.client.api.MostlyAI.computes" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -1800,7 +1800,7 @@
 
 
 <h3 id="mostlyai.client.api.MostlyAI.connect" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">connect</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.api.MostlyAI.connect</span>
 
 
 <a href="#mostlyai.client.api.MostlyAI.connect" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -1847,7 +1847,7 @@
                 <code>config</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.ConnectorConfig" href="../api_domain/#mostlyai.domain.ConnectorConfig">ConnectorConfig</a>, dict[str, <span title="typing.Any">Any</span>]]</code>
+                  <code><a class="autorefs autorefs-internal" title="mostlyai.domain.ConnectorConfig" href="../api_domain/#mostlyai.domain.ConnectorConfig">ConnectorConfig</a> | dict[str, <span title="typing.Any">Any</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1863,7 +1863,7 @@
                 <code>test_connection</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[bool]</code>
+                  <code>bool | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2023,7 +2023,7 @@
 
 
 <h3 id="mostlyai.client.api.MostlyAI.generate" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">generate</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.api.MostlyAI.generate</span>
 
 
 <a href="#mostlyai.client.api.MostlyAI.generate" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -2111,7 +2111,7 @@
                 <code>generator</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.Generator" href="../api_domain/#mostlyai.domain.Generator">Generator</a>, str, None]</code>
+                  <code><a class="autorefs autorefs-internal" title="mostlyai.domain.Generator" href="../api_domain/#mostlyai.domain.Generator">Generator</a> | str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2127,7 +2127,7 @@
                 <code>config</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.SyntheticDatasetConfig" href="../api_domain/#mostlyai.domain.SyntheticDatasetConfig">SyntheticDatasetConfig</a>, dict, None]</code>
+                  <code><a class="autorefs autorefs-internal" title="mostlyai.domain.SyntheticDatasetConfig" href="../api_domain/#mostlyai.domain.SyntheticDatasetConfig">SyntheticDatasetConfig</a> | dict | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2158,7 +2158,7 @@
                 <code>seed</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="mostlyai.client._mostly_utils.Seed">Seed</span>, dict[str, <span title="mostlyai.client._mostly_utils.Seed">Seed</span>], None]</code>
+                  <code><span title="mostlyai.client._mostly_utils.Seed">Seed</span> | dict[str, <span title="mostlyai.client._mostly_utils.Seed">Seed</span>] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2174,7 +2174,7 @@
                 <code>name</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[str]</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2267,7 +2267,7 @@
 
 
 <h3 id="mostlyai.client.api.MostlyAI.me" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">me</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.api.MostlyAI.me</span>
 
 
 <a href="#mostlyai.client.api.MostlyAI.me" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -2318,7 +2318,7 @@
 
 
 <h3 id="mostlyai.client.api.MostlyAI.models" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">models</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.api.MostlyAI.models</span>
 
 
 <a href="#mostlyai.client.api.MostlyAI.models" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -2357,7 +2357,7 @@
                 <code>model_type</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, <a class="autorefs autorefs-internal" title="mostlyai.domain.ModelType" href="../api_domain/#mostlyai.domain.ModelType">ModelType</a>]</code>
+                  <code>str | <a class="autorefs autorefs-internal" title="mostlyai.domain.ModelType" href="../api_domain/#mostlyai.domain.ModelType">ModelType</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2402,7 +2402,7 @@
 
 
 <h3 id="mostlyai.client.api.MostlyAI.probe" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">probe</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.api.MostlyAI.probe</span>
 
 
 <a href="#mostlyai.client.api.MostlyAI.probe" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -2470,7 +2470,7 @@
                 <code>generator</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.Generator" href="../api_domain/#mostlyai.domain.Generator">Generator</a>, str, None]</code>
+                  <code><a class="autorefs autorefs-internal" title="mostlyai.domain.Generator" href="../api_domain/#mostlyai.domain.Generator">Generator</a> | str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2486,7 +2486,7 @@
                 <code>size</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[int, dict[str, int], None]</code>
+                  <code>int | dict[str, int] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2502,7 +2502,7 @@
                 <code>seed</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="mostlyai.client._mostly_utils.Seed">Seed</span>, dict[str, <span title="mostlyai.client._mostly_utils.Seed">Seed</span>], None]</code>
+                  <code><span title="mostlyai.client._mostly_utils.Seed">Seed</span> | dict[str, <span title="mostlyai.client._mostly_utils.Seed">Seed</span>] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2518,7 +2518,7 @@
                 <code>config</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.SyntheticProbeConfig" href="../api_domain/#mostlyai.domain.SyntheticProbeConfig">SyntheticProbeConfig</a>, dict, None]</code>
+                  <code><a class="autorefs autorefs-internal" title="mostlyai.domain.SyntheticProbeConfig" href="../api_domain/#mostlyai.domain.SyntheticProbeConfig">SyntheticProbeConfig</a> | dict | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2560,7 +2560,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="pandas.DataFrame">DataFrame</span>, dict[str, <span title="pandas.DataFrame">DataFrame</span>]]</code>
+                  <code><span title="pandas.DataFrame">DataFrame</span> | dict[str, <span title="pandas.DataFrame">DataFrame</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2579,7 +2579,7 @@
 
 
 <h3 id="mostlyai.client.api.MostlyAI.train" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">train</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.api.MostlyAI.train</span>
 
 
 <a href="#mostlyai.client.api.MostlyAI.train" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -2597,52 +2597,72 @@
 
         <p>Train a generator.</p>
 <p>See <a href="../api_domain/#mostlyai.domain.GeneratorConfig">GeneratorConfig</a> for more information on the available configuration parameters.</p>
-
-
-<details class="example-configuration-using-short-hand-notation" open>
-  <summary>Example configuration using short-hand notation</summary>
-  <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">mostlyai</span> <span class="kn">import</span> <span class="n">MostlyAI</span>
+<p>Example of short-hand notation, reading data from path:
+    <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">mostlyai</span> <span class="kn">import</span> <span class="n">MostlyAI</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">mostly</span> <span class="o">=</span> <span class="n">MostlyAI</span><span class="p">()</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">g</span> <span class="o">=</span> <span class="n">mostly</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;census&#39;</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">data</span><span class="o">=</span><span class="n">df_original</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span>
-</span></code></pre></div>
-</details>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">data</span><span class="o">=</span><span class="s1">&#39;https://github.com/mostly-ai/public-demo-data/raw/dev/census/census.csv.gz&#39;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span>
+</span></code></pre></div></p>
+<p>Example of short-hand notation, passing data as pandas DataFrame:
+    <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># read original data</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">df_original</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://github.com/mostly-ai/public-demo-data/raw/dev/titanic/titanic.csv&#39;</span><span class="p">)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># instantiate client</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kn">from</span> <span class="nn">mostlyai</span> <span class="kn">import</span> <span class="n">MostlyAI</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">mostly</span> <span class="o">=</span> <span class="n">MostlyAI</span><span class="p">()</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># train generator</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">g</span> <span class="o">=</span> <span class="n">mostly</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;census&#39;</span><span class="p">,</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="n">data</span><span class="o">=</span><span class="n">df_original</span><span class="p">,</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">)</span>
+</span></code></pre></div></p>
+
 
 <details class="example-configuration-using-generatorconfig" open>
   <summary>Example configuration using GeneratorConfig</summary>
-  <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">mostlyai</span> <span class="kn">import</span> <span class="n">MostlyAI</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">mostly</span> <span class="o">=</span> <span class="n">MostlyAI</span><span class="p">()</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">g</span> <span class="o">=</span> <span class="n">mostly</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">config</span><span class="o">=</span><span class="n">GeneratorConfig</span><span class="p">(</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;census&#39;</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="n">tables</span><span class="o">=</span><span class="p">[</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>            <span class="n">SourceTableConfig</span><span class="p">(</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>                <span class="n">name</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>                <span class="n">data</span><span class="o">=</span><span class="n">df_original</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="p">)</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="p">]</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="p">)</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">)</span>
+  <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># read original data</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">df_original</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://github.com/mostly-ai/public-demo-data/raw/dev/titanic/titanic.csv&#39;</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># instantiate client</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">from</span> <span class="nn">mostlyai</span> <span class="kn">import</span> <span class="n">MostlyAI</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">mostly</span> <span class="o">=</span> <span class="n">MostlyAI</span><span class="p">()</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># configure generator via GeneratorConfig</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kn">from</span> <span class="nn">mostlyai.domain</span> <span class="kn">import</span> <span class="n">GeneratorConfig</span><span class="p">,</span> <span class="n">SourceTableConfig</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">g</span> <span class="o">=</span> <span class="n">mostly</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">config</span><span class="o">=</span><span class="n">GeneratorConfig</span><span class="p">(</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;census&#39;</span><span class="p">,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        <span class="n">tables</span><span class="o">=</span><span class="p">[</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>            <span class="n">SourceTableConfig</span><span class="p">(</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>                <span class="n">name</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>                <span class="n">data</span><span class="o">=</span><span class="n">df_original</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>            <span class="p">)</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        <span class="p">]</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="p">)</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">)</span>
 </span></code></pre></div>
 </details>
 
 <details class="example-configuration-using-a-dictionary" open>
   <summary>Example configuration using a dictionary</summary>
-  <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">mostlyai</span> <span class="kn">import</span> <span class="n">MostlyAI</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">mostly</span> <span class="o">=</span> <span class="n">MostlyAI</span><span class="p">()</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">g</span> <span class="o">=</span> <span class="n">mostly</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">config</span><span class="o">=</span><span class="p">{</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;census&#39;</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="s1">&#39;tables&#39;</span><span class="p">:</span> <span class="p">[</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>            <span class="p">{</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>                <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>                <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">df_original</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="p">}</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="p">]</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="p">}</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">)</span>
+  <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># read original data</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">df_original</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://github.com/mostly-ai/public-demo-data/raw/dev/titanic/titanic.csv&#39;</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># instantiate client</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">from</span> <span class="nn">mostlyai</span> <span class="kn">import</span> <span class="n">MostlyAI</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">mostly</span> <span class="o">=</span> <span class="n">MostlyAI</span><span class="p">()</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># configure generator via dictionary</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">g</span> <span class="o">=</span> <span class="n">mostly</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">config</span><span class="o">=</span><span class="p">{</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;census&#39;</span><span class="p">,</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="s1">&#39;tables&#39;</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>            <span class="p">{</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>                <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>                <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">df_original</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            <span class="p">}</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="p">]</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="p">}</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p">)</span>
 </span></code></pre></div>
 </details>
 
@@ -2662,7 +2682,7 @@
                 <code>config</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.GeneratorConfig" href="../api_domain/#mostlyai.domain.GeneratorConfig">GeneratorConfig</a>, dict, None]</code>
+                  <code><a class="autorefs autorefs-internal" title="mostlyai.domain.GeneratorConfig" href="../api_domain/#mostlyai.domain.GeneratorConfig">GeneratorConfig</a> | dict | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2678,7 +2698,7 @@
                 <code>data</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="pandas.DataFrame">DataFrame</span>, str, <span title="pathlib.Path">Path</span>, None]</code>
+                  <code><span title="pandas.DataFrame">DataFrame</span> | str | <span title="pathlib.Path">Path</span> | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2694,7 +2714,7 @@
                 <code>name</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[str]</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2822,7 +2842,7 @@
 
 
 <h3 id="mostlyai.client.generators._MostlyGeneratorsClient.create" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">create</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.generators._MostlyGeneratorsClient.create</span>
 
 
 <a href="#mostlyai.client.generators._MostlyGeneratorsClient.create" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -2840,9 +2860,9 @@
   <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">mostlyai</span> <span class="kn">import</span> <span class="n">MostlyAI</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">mostly</span> <span class="o">=</span> <span class="n">MostlyAI</span><span class="p">()</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">g</span> <span class="o">=</span> <span class="n">mostly</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">config</span><span class="o">=</span><span class="n">GeneratorConfig</span><span class="p">(</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;US Census&quot;</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="n">tables</span><span class="o">=</span><span class="p">[{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">config</span><span class="o">=</span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;US Census&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="s2">&quot;tables&quot;</span><span class="p">:</span> <span class="p">[{</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;census&quot;</span><span class="p">,</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">original_df</span><span class="p">,</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="p">}]</span>
@@ -2875,7 +2895,7 @@
                 <code>config</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.GeneratorConfig" href="../api_domain/#mostlyai.domain.GeneratorConfig">GeneratorConfig</a>, dict]</code>
+                  <code><a class="autorefs autorefs-internal" title="mostlyai.domain.GeneratorConfig" href="../api_domain/#mostlyai.domain.GeneratorConfig">GeneratorConfig</a> | dict</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2920,7 +2940,7 @@
 
 
 <h3 id="mostlyai.client.generators._MostlyGeneratorsClient.get" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">get</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.generators._MostlyGeneratorsClient.get</span>
 
 
 <a href="#mostlyai.client.generators._MostlyGeneratorsClient.get" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -3002,7 +3022,7 @@
 
 
 <h3 id="mostlyai.client.generators._MostlyGeneratorsClient.import_from_file" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">import_from_file</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.generators._MostlyGeneratorsClient.import_from_file</span>
 
 
 <a href="#mostlyai.client.generators._MostlyGeneratorsClient.import_from_file" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -3039,7 +3059,7 @@
                 <code>file_path</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, <span title="pathlib.Path">Path</span>]</code>
+                  <code>str | <span title="pathlib.Path">Path</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3084,7 +3104,7 @@
 
 
 <h3 id="mostlyai.client.generators._MostlyGeneratorsClient.list" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">list</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.generators._MostlyGeneratorsClient.list</span>
 
 
 <a href="#mostlyai.client.generators._MostlyGeneratorsClient.list" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -3163,7 +3183,7 @@
                 <code>status</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[str, <a class="autorefs autorefs-internal" title="mostlyai.client.generators._MostlyGeneratorsClient.list" href="#mostlyai.client.generators._MostlyGeneratorsClient.list">list</a>[str]]]</code>
+                  <code>str | <a class="autorefs autorefs-internal" title="mostlyai.client.generators._MostlyGeneratorsClient.list" href="#mostlyai.client.generators._MostlyGeneratorsClient.list">list</a>[str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3179,7 +3199,7 @@
                 <code>search_term</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[str]</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3205,7 +3225,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.Iterator">Iterator</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.GeneratorListItem" href="../api_domain/#mostlyai.domain.GeneratorListItem">GeneratorListItem</a>]</code>
+                  <code><span title="collections.abc.Iterator">Iterator</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.GeneratorListItem" href="../api_domain/#mostlyai.domain.GeneratorListItem">GeneratorListItem</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3386,7 +3406,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>tables</code>
             </td>
             <td>
-                  <code><span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.SourceTable" href="../api_domain/#mostlyai.domain.SourceTable">SourceTable</a>] | None</code>
+                  <code>list[<a class="autorefs autorefs-internal" title="mostlyai.domain.SourceTable" href="../api_domain/#mostlyai.domain.SourceTable">SourceTable</a>] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3438,7 +3458,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.domain.Generator.Training" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">Training</span>
+            <span class="doc doc-object-name doc-class-name">mostlyai.domain.Generator.Training</span>
 
 
 <a href="#mostlyai.domain.Generator.Training" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -3469,7 +3489,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h4 id="mostlyai.domain.Generator.Training.cancel" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">cancel</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.Generator.Training.cancel</span>
 
 
 <a href="#mostlyai.domain.Generator.Training.cancel" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -3488,7 +3508,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h4 id="mostlyai.domain.Generator.Training.progress" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">progress</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.Generator.Training.progress</span>
 
 
 <a href="#mostlyai.domain.Generator.Training.progress" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -3530,7 +3550,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h4 id="mostlyai.domain.Generator.Training.start" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">start</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.Generator.Training.start</span>
 
 
 <a href="#mostlyai.domain.Generator.Training.start" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -3549,7 +3569,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h4 id="mostlyai.domain.Generator.Training.wait" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">wait</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.Generator.Training.wait</span>
 
 
 <a href="#mostlyai.domain.Generator.Training.wait" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -3624,7 +3644,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.domain.Generator.clone" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">clone</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.Generator.clone</span>
 
 
 <a href="#mostlyai.domain.Generator.clone" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -3678,7 +3698,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
       <tbody>
           <tr class="doc-section-item">
 <td><code>Generator</code></td>            <td>
-                  <code>&#39;Generator&#39;</code>
+                  <code><a class="autorefs autorefs-internal" title="mostlyai.domain.Generator" href="../api_domain/#mostlyai.domain.Generator">Generator</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3697,7 +3717,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.domain.Generator.config" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">config</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.Generator.config</span>
 
 
 <a href="#mostlyai.domain.Generator.config" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -3739,7 +3759,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.domain.Generator.delete" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">delete</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.Generator.delete</span>
 
 
 <a href="#mostlyai.domain.Generator.delete" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -3781,7 +3801,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.domain.Generator.export_to_file" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">export_to_file</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.Generator.export_to_file</span>
 
 
 <a href="#mostlyai.domain.Generator.export_to_file" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -3809,7 +3829,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>file_path</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, <span title="pathlib.Path">Path</span>, None]</code>
+                  <code>str | <span title="pathlib.Path">Path</span> | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3854,7 +3874,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.domain.Generator.update" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">update</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.Generator.update</span>
 
 
 <a href="#mostlyai.domain.Generator.update" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -3882,7 +3902,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>name</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[str]</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3898,7 +3918,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>description</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[str]</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3955,7 +3975,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.client.synthetic_datasets._MostlySyntheticDatasetsClient.create" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">create</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.synthetic_datasets._MostlySyntheticDatasetsClient.create</span>
 
 
 <a href="#mostlyai.client.synthetic_datasets._MostlySyntheticDatasetsClient.create" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -4004,7 +4024,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>config</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.SyntheticDatasetConfig" href="../api_domain/#mostlyai.domain.SyntheticDatasetConfig">SyntheticDatasetConfig</a>, dict[str, <span title="typing.Any">Any</span>]]</code>
+                  <code><a class="autorefs autorefs-internal" title="mostlyai.domain.SyntheticDatasetConfig" href="../api_domain/#mostlyai.domain.SyntheticDatasetConfig">SyntheticDatasetConfig</a> | dict[str, <span title="typing.Any">Any</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4049,7 +4069,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.client.synthetic_datasets._MostlySyntheticDatasetsClient.get" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">get</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.synthetic_datasets._MostlySyntheticDatasetsClient.get</span>
 
 
 <a href="#mostlyai.client.synthetic_datasets._MostlySyntheticDatasetsClient.get" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -4131,7 +4151,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.client.synthetic_datasets._MostlySyntheticDatasetsClient.list" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">list</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.synthetic_datasets._MostlySyntheticDatasetsClient.list</span>
 
 
 <a href="#mostlyai.client.synthetic_datasets._MostlySyntheticDatasetsClient.list" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -4210,7 +4230,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>status</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[str, <a class="autorefs autorefs-internal" title="mostlyai.client.synthetic_datasets._MostlySyntheticDatasetsClient.list" href="#mostlyai.client.synthetic_datasets._MostlySyntheticDatasetsClient.list">list</a>[str]]]</code>
+                  <code>str | <a class="autorefs autorefs-internal" title="mostlyai.client.synthetic_datasets._MostlySyntheticDatasetsClient.list" href="#mostlyai.client.synthetic_datasets._MostlySyntheticDatasetsClient.list">list</a>[str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4226,7 +4246,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>search_term</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[str]</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4252,7 +4272,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.Iterator">Iterator</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.SyntheticDatasetListItem" href="../api_domain/#mostlyai.domain.SyntheticDatasetListItem">SyntheticDatasetListItem</a>]</code>
+                  <code><span title="collections.abc.Iterator">Iterator</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.SyntheticDatasetListItem" href="../api_domain/#mostlyai.domain.SyntheticDatasetListItem">SyntheticDatasetListItem</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4416,7 +4436,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>tables</code>
             </td>
             <td>
-                  <code><span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.SyntheticTable" href="../api_domain/#mostlyai.domain.SyntheticTable">SyntheticTable</a>] | None</code>
+                  <code>list[<a class="autorefs autorefs-internal" title="mostlyai.domain.SyntheticTable" href="../api_domain/#mostlyai.domain.SyntheticTable">SyntheticTable</a>] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4517,7 +4537,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.domain.SyntheticDataset.Generation" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">Generation</span>
+            <span class="doc doc-object-name doc-class-name">mostlyai.domain.SyntheticDataset.Generation</span>
 
 
 <a href="#mostlyai.domain.SyntheticDataset.Generation" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -4548,7 +4568,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h4 id="mostlyai.domain.SyntheticDataset.Generation.cancel" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">cancel</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.SyntheticDataset.Generation.cancel</span>
 
 
 <a href="#mostlyai.domain.SyntheticDataset.Generation.cancel" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -4567,7 +4587,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h4 id="mostlyai.domain.SyntheticDataset.Generation.progress" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">progress</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.SyntheticDataset.Generation.progress</span>
 
 
 <a href="#mostlyai.domain.SyntheticDataset.Generation.progress" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -4609,7 +4629,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h4 id="mostlyai.domain.SyntheticDataset.Generation.start" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">start</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.SyntheticDataset.Generation.start</span>
 
 
 <a href="#mostlyai.domain.SyntheticDataset.Generation.start" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -4628,7 +4648,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h4 id="mostlyai.domain.SyntheticDataset.Generation.wait" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">wait</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.SyntheticDataset.Generation.wait</span>
 
 
 <a href="#mostlyai.domain.SyntheticDataset.Generation.wait" class="headerlink" title="Permanent link">&para;</a></h4>
@@ -4703,7 +4723,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.domain.SyntheticDataset.config" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">config</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.SyntheticDataset.config</span>
 
 
 <a href="#mostlyai.domain.SyntheticDataset.config" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -4745,7 +4765,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.domain.SyntheticDataset.data" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">data</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.SyntheticDataset.data</span>
 
 
 <a href="#mostlyai.domain.SyntheticDataset.data" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -4799,7 +4819,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="pandas.DataFrame">DataFrame</span>, dict[str, <span title="pandas.DataFrame">DataFrame</span>]]</code>
+                  <code><span title="pandas.DataFrame">DataFrame</span> | dict[str, <span title="pandas.DataFrame">DataFrame</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4818,7 +4838,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.domain.SyntheticDataset.delete" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">delete</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.SyntheticDataset.delete</span>
 
 
 <a href="#mostlyai.domain.SyntheticDataset.delete" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -4860,7 +4880,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.domain.SyntheticDataset.download" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">download</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.SyntheticDataset.download</span>
 
 
 <a href="#mostlyai.domain.SyntheticDataset.download" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -4904,7 +4924,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>file_path</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, <span title="pathlib.Path">Path</span>, None]</code>
+                  <code>str | <span title="pathlib.Path">Path</span> | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4949,7 +4969,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.domain.SyntheticDataset.update" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">update</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.SyntheticDataset.update</span>
 
 
 <a href="#mostlyai.domain.SyntheticDataset.update" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -4977,7 +4997,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>name</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[str]</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4993,7 +5013,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>description</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[str]</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5009,7 +5029,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>delivery</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.SyntheticDatasetDelivery" href="../api_domain/#mostlyai.domain.SyntheticDatasetDelivery">SyntheticDatasetDelivery</a>]</code>
+                  <code><a class="autorefs autorefs-internal" title="mostlyai.domain.SyntheticDatasetDelivery" href="../api_domain/#mostlyai.domain.SyntheticDatasetDelivery">SyntheticDatasetDelivery</a> | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5066,7 +5086,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.client.connectors._MostlyConnectorsClient.create" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">create</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.connectors._MostlyConnectorsClient.create</span>
 
 
 <a href="#mostlyai.client.connectors._MostlyConnectorsClient.create" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -5095,7 +5115,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>config</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.ConnectorConfig" href="../api_domain/#mostlyai.domain.ConnectorConfig">ConnectorConfig</a>, dict[str, <span title="typing.Any">Any</span>]]</code>
+                  <code><a class="autorefs autorefs-internal" title="mostlyai.domain.ConnectorConfig" href="../api_domain/#mostlyai.domain.ConnectorConfig">ConnectorConfig</a> | dict[str, <span title="typing.Any">Any</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5111,7 +5131,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>test_connection</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[bool]</code>
+                  <code>bool | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5156,7 +5176,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.client.connectors._MostlyConnectorsClient.get" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">get</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.connectors._MostlyConnectorsClient.get</span>
 
 
 <a href="#mostlyai.client.connectors._MostlyConnectorsClient.get" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -5238,7 +5258,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
 
 
 <h3 id="mostlyai.client.connectors._MostlyConnectorsClient.list" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">list</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.client.connectors._MostlyConnectorsClient.list</span>
 
 
 <a href="#mostlyai.client.connectors._MostlyConnectorsClient.list" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -5310,7 +5330,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>access_type</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[str]</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5326,7 +5346,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>search_term</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[str]</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5352,7 +5372,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="typing.Iterator">Iterator</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.ConnectorListItem" href="../api_domain/#mostlyai.domain.ConnectorListItem">ConnectorListItem</a>]</code>
+                  <code><span title="collections.abc.Iterator">Iterator</span>[<a class="autorefs autorefs-internal" title="mostlyai.domain.ConnectorListItem" href="../api_domain/#mostlyai.domain.ConnectorListItem">ConnectorListItem</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5467,7 +5487,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>config</code>
             </td>
             <td>
-                  <code><span title="typing.Dict">Dict</span>[str, <span title="typing.Any">Any</span>] | None</code>
+                  <code>dict[str, <span title="typing.Any">Any</span>] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5483,7 +5503,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>secrets</code>
             </td>
             <td>
-                  <code><span title="typing.Dict">Dict</span>[str, str] | None</code>
+                  <code>dict[str, str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5499,7 +5519,7 @@ This is the average of the overall accuracy scores of all trained models.</p>
                 <code>ssl</code>
             </td>
             <td>
-                  <code><span title="typing.Dict">Dict</span>[str, str] | None</code>
+                  <code>dict[str, str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5584,7 +5604,7 @@ If not set, then this connector is managed independently of any generator or syn
 
 
 <h3 id="mostlyai.domain.Connector.delete" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">delete</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.Connector.delete</span>
 
 
 <a href="#mostlyai.domain.Connector.delete" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -5626,7 +5646,7 @@ If not set, then this connector is managed independently of any generator or syn
 
 
 <h3 id="mostlyai.domain.Connector.locations" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">locations</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.Connector.locations</span>
 
 
 <a href="#mostlyai.domain.Connector.locations" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -5723,7 +5743,7 @@ For DB connectors, this returns list of schemas (or databases for DBs without sc
 
 
 <h3 id="mostlyai.domain.Connector.schema" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">schema</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.Connector.schema</span>
 
 
 <a href="#mostlyai.domain.Connector.schema" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -5797,7 +5817,7 @@ Please refer to <code>locations()</code> for the format of the location.</p>
 
 
 <h3 id="mostlyai.domain.Connector.update" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">update</span>
+            <span class="doc doc-object-name doc-function-name">mostlyai.domain.Connector.update</span>
 
 
 <a href="#mostlyai.domain.Connector.update" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -5831,7 +5851,7 @@ Please refer to <code>locations()</code> for the format of the location.</p>
                 <code>name</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[str]</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5895,7 +5915,7 @@ Please refer to <code>locations()</code> for the format of the location.</p>
                 <code>test_connection</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[bool]</code>
+                  <code>bool | None</code>
             </td>
             <td>
               <div class="doc-md-description">
